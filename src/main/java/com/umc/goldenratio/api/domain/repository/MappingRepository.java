@@ -1,4 +1,7 @@
 package com.umc.goldenratio.api.domain.repository;
 
-public interface MappingRepository {
+import com.umc.goldenratio.api.domain.entity.Mapping;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MappingRepository extends JpaRepository<Mapping, Long> {
 }

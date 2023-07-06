@@ -1,4 +1,7 @@
 package com.umc.goldenratio.api.domain.repository;
 
-public interface ReviewRepository {
+import com.umc.goldenratio.api.domain.entity.Review;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }
