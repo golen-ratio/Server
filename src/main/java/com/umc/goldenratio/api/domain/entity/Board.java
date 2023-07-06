@@ -38,6 +38,10 @@ public class Board extends BaseTimeEntity {
     @Column(name = "board_category")
     private String category;
 
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
+
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes = new ArrayList<>();
 
