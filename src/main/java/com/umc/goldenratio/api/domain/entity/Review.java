@@ -25,11 +25,11 @@ public class Review extends BaseTimeEntity {
     @Column(name = "review_score")
     private int score;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
     private Users users;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
 }

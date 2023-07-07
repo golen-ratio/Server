@@ -24,7 +24,7 @@ public class Detail {
     @Column(name = "detail_alchol")
     private int alcohol;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
 }

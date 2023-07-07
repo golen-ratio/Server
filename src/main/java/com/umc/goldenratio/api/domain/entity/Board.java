@@ -38,7 +38,7 @@ public class Board extends BaseTimeEntity {
     @Column(name = "board_category")
     private String category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
     private Users users;
 
