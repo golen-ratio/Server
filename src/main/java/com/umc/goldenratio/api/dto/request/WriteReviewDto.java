@@ -12,4 +12,5 @@ public class WriteReviewDto {
     private String content;
     private int score;
 
+
 }
