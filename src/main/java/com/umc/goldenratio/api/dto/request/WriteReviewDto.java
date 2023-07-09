@@ -11,5 +11,4 @@ public class WriteReviewDto {
     private Long UserId;
     private String content;
     private int score;
-
 }
