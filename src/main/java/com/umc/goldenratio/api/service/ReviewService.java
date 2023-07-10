@@ -7,8 +7,12 @@ import com.umc.goldenratio.api.domain.repository.BoardRepository;
 import com.umc.goldenratio.api.domain.repository.ReviewRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.WriteReviewDto;
+import com.umc.goldenratio.api.dto.response.ReviewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +37,12 @@ public class ReviewService {
 
         return reviewRepository.save(review);
 
+    }
+    // 특정 게시판의 리뷰 조회
+    public List<ReviewDto> inquire(Long boardId) {
+        return reviewRepository.findByBoardId(boardId)
+                .stream()
+                .map(review -> ReviewDto.createReviewDto(review))
+                .collect(Collectors.toList());
     }
 }
