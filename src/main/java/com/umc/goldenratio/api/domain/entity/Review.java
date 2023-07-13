@@ -1,10 +1,7 @@
 package com.umc.goldenratio.api.domain.entity;
 
 import com.umc.goldenratio.common.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
