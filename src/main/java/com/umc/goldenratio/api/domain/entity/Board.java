@@ -14,7 +14,6 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Board extends BaseTimeEntity {
@@ -56,4 +55,23 @@ public class Board extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mapping> mappings = new ArrayList<>();
+
+    @Builder
+    public Board(String title, String content, String mainImage, String category, Users users) {
+        this.title = title;
+        this.content = content;
+        this.mainImage = mainImage;
+        this.category = category;
+        this.users = users;
+    }
+
+    public static Board toEntity(String title, String content, String mainImage, String category, Users users) {
+        return Board.builder()
+                .title(title)
+                .content(content)
+                .mainImage(mainImage)
+                .category(category)
+                .users(users)
+                .build();
+    }
 }

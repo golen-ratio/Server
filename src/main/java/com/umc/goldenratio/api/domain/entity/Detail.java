@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Detail {
@@ -27,4 +26,20 @@ public class Detail {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
+
+    @Builder
+    public Detail(int sweet, int alcohol, Board board) {
+        this.sweet = sweet;
+        this.alcohol = alcohol;
+        this.board = board;
+    }
+
+    public static Detail toEntity(int sweet, int alcohol, Board board){
+        return Detail.builder()
+                .sweet(sweet)
+                .alcohol(alcohol)
+                .board(board)
+                .build();
+    }
+
 }
