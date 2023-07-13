@@ -18,7 +18,7 @@ public class BoardController {
 
 
     @ApiOperation(value = "칵테일 게시판 생성")
-    @PostMapping(value = "/golden-ratio/board", produces = "application/text;charset = utf-8")
+    @PostMapping(value = "/golden-ratio/cocktail", produces = "application/text;charset = utf-8")
     public ResponseEntity<String> createBoard(Authentication authentication,
                                               @RequestBody CocktailRequestDto cocktailRequestDto){
 
