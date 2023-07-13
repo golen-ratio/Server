@@ -10,7 +10,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Balance {
@@ -29,4 +28,20 @@ public class Balance {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
+
+    @Builder
+    public Balance(String balanceName, int balanceNumber, Board board) {
+        this.balanceName = balanceName;
+        this.balanceNumber = balanceNumber;
+        this.board = board;
+    }
+
+    public static Balance toEntity(String balanceName, int balanceNumber, Board board){
+        return Balance.builder()
+                .balanceName(balanceName)
+                .balanceNumber(balanceNumber)
+                .board(board)
+                .build();
+    }
+
 }

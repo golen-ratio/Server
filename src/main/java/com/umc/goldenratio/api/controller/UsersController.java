@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,7 +23,7 @@ public class UsersController {
             @ApiResponse(code = 200, message = "success"),
             @ApiResponse(code = 409, message = "이미 존재하는 아이디입니다")
     })
-    @GetMapping("/check/{user-id}")
+    @GetMapping(value = "/check/{user-id}", produces = "application/text;charset = utf-8")
     public ResponseEntity<String> checkDuplicate(@PathVariable(name = "user-id") String userId) {
 
         usersService.checkDuplicate(userId);
