@@ -8,38 +8,57 @@ import com.umc.goldenratio.api.domain.repository.ReviewRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.WriteReviewDto;
 import com.umc.goldenratio.api.dto.response.ReviewDto;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Log4j2
 @Service
 @RequiredArgsConstructor
+
 public class ReviewService {
-    private ReviewRepository reviewRepository;
+    private final ReviewRepository reviewRepository;
     private final BoardRepository boardRepository;
     private final UsersRepository usersRepository;
-    public Review write(Long boardId, WriteReviewDto writeReviewDto) {
+    public Review write(Long boardId,  WriteReviewDto writeReviewDto, String userId) {
         // 게시판 조회
-        Board board  = boardRepository.findById(boardId)
-                .orElseThrow(() -> new IllegalArgumentException("대상 게시글이 없습니다."));
-        Users users = usersRepository.findById(writeReviewDto.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("사용자가 존재하지 않습니다."));
+        Optional<Board> boardOptional = boardRepository.findById(boardId);
+        if (boardOptional.isEmpty()) {
+            throw new RuntimeException("게시판이 존재하지 않습니다.");
+        }
+        Board board = boardOptional.get();
 
-        // review 엔티티 생성
+        // 사용자 조회
+        Optional<Users> usersOptional = usersRepository.findByUserId(userId);
+        if (usersOptional.isEmpty()) {
+            throw new RuntimeException("사용자를 찾을 수 없습니다.");
+        }
+        Users users = usersOptional.get();
+        // 리뷰 작성
         Review review = Review.builder()
                 .content(writeReviewDto.getContent())
                 .score(writeReviewDto.getScore())
-                .board(board)
                 .users(users)
+                .board(board)
                 .build();
 
-        return reviewRepository.save(review);
+        // 리뷰 저장
+        Review savedReview = reviewRepository.save(review);
 
+        return savedReview;
     }
     // 특정 게시판의 리뷰 조회
     public List<ReviewDto> inquire(Long boardId) {
+        // 게시판 조회
+        Optional<Board> boardOptional = boardRepository.findById(boardId);
+        if (boardOptional.isEmpty()) {
+            throw new RuntimeException("게시판이 존재하지 않습니다.");
+        }
         return reviewRepository.findByBoardId(boardId)
                 .stream()
                 .map(review -> ReviewDto.createReviewDto(review))
