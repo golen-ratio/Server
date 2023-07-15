@@ -15,4 +15,12 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
                     "WHERE board_id = :boardId",
             nativeQuery = true)
     List<Review> findByBoardId(@Param("boardId") Long boardId);
+
+    // 사용자의 리뷰 조회
+    @Query(value =
+            "SELECT * " +
+                    "FROM review " +
+                    "WHERE users_id = :usersId",
+            nativeQuery = true)
+    List<Review> findByUsersId(@Param("usersId") Long usersId);
 }
