@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Log4j2
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/golden-ratio")
@@ -28,23 +27,30 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @ApiOperation(value = "리뷰 작성")
-    @PostMapping("/review/{boardId}")
-    public ResponseEntity<Review> writeReview(@PathVariable Long boardId,
+    @PostMapping(value= "/review/{boardId}", produces = "application/text;charset = utf-8")
+    public ResponseEntity<String> writeReview(@PathVariable Long boardId,
                                               @RequestBody WriteReviewDto writeReviewDto,
                                               Authentication authentication){
 
         // Users의 id를 얻음
         String userId = authentication.getName();
 
-        Review writedReview = reviewService.write(boardId, writeReviewDto, userId);
-
-        return ResponseEntity.status(HttpStatus.OK).body(writedReview);
+        return ResponseEntity.status(HttpStatus.OK).body(reviewService.write(boardId, writeReviewDto, userId));
     }
 
     // 특정 게시판의 리뷰들 조회
     @GetMapping("/review/{boardId}")
     public ResponseEntity<List<ReviewDto>> inquireReview(@PathVariable Long boardId){
         List<ReviewDto> reviews = reviewService.inquire(boardId);
+        return ResponseEntity.status(HttpStatus.OK).body(reviews);
+
+    }
+    // 사용자의 리뷰 조회
+    @GetMapping("/review")
+    public ResponseEntity<List<ReviewDto>> inquireReview(Authentication authentication){
+        // Users의 id를 얻음
+        String userId = authentication.getName();
+        List<ReviewDto> reviews = reviewService.inquireBasedUser(userId);
         return ResponseEntity.status(HttpStatus.OK).body(reviews);
 
     }

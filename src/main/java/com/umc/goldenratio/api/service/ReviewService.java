@@ -17,15 +17,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-@Log4j2
+
 @Service
 @RequiredArgsConstructor
-
 public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final BoardRepository boardRepository;
     private final UsersRepository usersRepository;
-    public Review write(Long boardId,  WriteReviewDto writeReviewDto, String userId) {
+    public String write(Long boardId,  WriteReviewDto writeReviewDto, String userId) {
         // 게시판 조회
         Optional<Board> boardOptional = boardRepository.findById(boardId);
         if (boardOptional.isEmpty()) {
@@ -50,8 +49,9 @@ public class ReviewService {
         // 리뷰 저장
         Review savedReview = reviewRepository.save(review);
 
-        return savedReview;
+        return "리뷰작성을 완료했습니다. 리뷰 id: " + savedReview.getId();
     }
+
     // 특정 게시판의 리뷰 조회
     public List<ReviewDto> inquire(Long boardId) {
         // 게시판 조회
@@ -60,6 +60,23 @@ public class ReviewService {
             throw new RuntimeException("게시판이 존재하지 않습니다.");
         }
         return reviewRepository.findByBoardId(boardId)
+                .stream()
+                .map(review -> ReviewDto.createReviewDto(review))
+                .collect(Collectors.toList());
+    }
+
+    // 사용자의 리뷰 조회
+    public List<ReviewDto> inquireBasedUser(String userId) {
+        // 사용자 조회
+        Optional<Users> usersOptional = usersRepository.findByUserId(userId);
+        if (usersOptional.isEmpty()) {
+            throw new RuntimeException("사용자를 찾을 수 없습니다.");
+        }
+        Users users = usersOptional.get();
+
+        Long usersId = users.getId();
+
+        return reviewRepository.findByUsersId(usersId)
                 .stream()
                 .map(review -> ReviewDto.createReviewDto(review))
                 .collect(Collectors.toList());
