@@ -24,7 +24,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final BoardRepository boardRepository;
     private final UsersRepository usersRepository;
-    public Review write(Long boardId,  WriteReviewDto writeReviewDto, String userId) {
+    public String write(Long boardId,  WriteReviewDto writeReviewDto, String userId) {
         // 게시판 조회
         Optional<Board> boardOptional = boardRepository.findById(boardId);
         if (boardOptional.isEmpty()) {
@@ -49,7 +49,7 @@ public class ReviewService {
         // 리뷰 저장
         Review savedReview = reviewRepository.save(review);
 
-        return savedReview;
+        return "리뷰작성을 완료했습니다. 리뷰 id: " + savedReview.getId();
     }
 
     // 특정 게시판의 리뷰 조회

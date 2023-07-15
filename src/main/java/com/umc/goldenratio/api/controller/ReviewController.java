@@ -27,17 +27,15 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @ApiOperation(value = "리뷰 작성")
-    @PostMapping("/review/{boardId}")
-    public ResponseEntity<Review> writeReview(@PathVariable Long boardId,
+    @PostMapping(value= "/review/{boardId}", produces = "application/text;charset = utf-8")
+    public ResponseEntity<String> writeReview(@PathVariable Long boardId,
                                               @RequestBody WriteReviewDto writeReviewDto,
                                               Authentication authentication){
 
         // Users의 id를 얻음
         String userId = authentication.getName();
 
-        Review writedReview = reviewService.write(boardId, writeReviewDto, userId);
-
-        return ResponseEntity.status(HttpStatus.OK).body(writedReview);
+        return ResponseEntity.status(HttpStatus.OK).body(reviewService.write(boardId, writeReviewDto, userId));
     }
 
     // 특정 게시판의 리뷰들 조회
