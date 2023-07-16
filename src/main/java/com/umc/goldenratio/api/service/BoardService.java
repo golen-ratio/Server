@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
+
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +37,18 @@ public class BoardService {
         mappingService.save(cocktailRequestDto.getGradientList(), board);
         balanceService.save(cocktailRequestDto.getBalanceList(), board);
         detailService.save(cocktailRequestDto.getSweet(),cocktailRequestDto.getAlcohol(), board);
+    }
+
+    @Transactional
+    public void createHangover(Authentication authentication, HangoverRequestDto hangoverRequestDto) {
+        Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
+        Board board = Board.toEntity(hangoverRequestDto.getTitle(),
+                hangoverRequestDto.getContent(),
+                hangoverRequestDto.getHangoverMainImageUrl(),
+                hangoverRequestDto.getCategory(), 
+                users);
+
+        boardRepository.save(board);
+        mappingService.save(hangoverRequestDto.getGradientList(), board);
     }
 }
