@@ -23,7 +23,8 @@ public class Balance {
 
     @Column(name = "balance_number")
     @Nullable
-    private int balanceNumber;
+    //nullable 사용을 위해 int를 Integer로 변경.
+    private Integer balanceNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
