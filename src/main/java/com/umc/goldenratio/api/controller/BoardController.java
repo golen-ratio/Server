@@ -35,6 +35,4 @@ public class BoardController {
         boardService.createHangover(authentication, hangoverRequestDto);
         return ResponseEntity.ok().body("숙취해소 게시글이 성공적으로 등록되었습니다.");
     }
-
-
 }
