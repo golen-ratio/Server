@@ -92,4 +92,22 @@ public class BoardService {
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
     }
+
+    // 도수순서대로 정렬
+    public List<BoardDto> getBoardsSortedByAlcohol() {
+        List<Board> boards =  boardRepository.findAllByOrderByAlcoholDesc();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
+    }
+
+    private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
+        List<BoardDto> boardDtoList = new ArrayList<>();
+        for (Board board : boards) {
+            BoardDto boardDto = BoardDto.from(board);
+            boardDtoList.add(boardDto);
+        }
+        return boardDtoList;
+    }
+
+
 }

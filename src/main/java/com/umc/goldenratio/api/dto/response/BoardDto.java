@@ -3,8 +3,11 @@ package com.umc.goldenratio.api.dto.response;
 import com.umc.goldenratio.api.domain.entity.Board;
 import lombok.*;
 
+<<<<<<< HEAD
 import java.math.BigDecimal;
 
+=======
+>>>>>>> 9144d1d ([FEAT] : 칵테일 도수높은순 조회기능 구현)
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,7 +19,7 @@ public class BoardDto {
     private String content;
     private String mainImage;
     private String category;
-    private BigDecimal averageScore;
+//    private int likecount;
 
     public static BoardDto from(Board board) {
         BoardDto boardDto = new BoardDto();
@@ -26,6 +29,7 @@ public class BoardDto {
         boardDto.setMainImage(board.getMainImage());
         boardDto.setCategory(board.getCategory());
         boardDto.setAverageScore(board.getAverageScore());
+//        boardDto.setLikecount(board.getLikes().size());
         return boardDto;
     }
 }
