@@ -69,5 +69,11 @@ public class BoardController {
         return ResponseEntity.ok(sortedBoards);
     }
 
+    // 단맛순서대로 정렬
+    @GetMapping("/golden-ratio/cocktail/sweet")
+    public ResponseEntity<List<BoardDto>> getBoardsSortedBySweet() {
+        List<BoardDto> sortedBoards = boardService.getBoardsSortedBySweet();
+        return ResponseEntity.ok(sortedBoards);
+    }
 
 }
