@@ -63,6 +63,13 @@ public class BoardService {
         return boardDtos;
     }
 
+    // 단맛순서대로 정렬
+    public List<BoardDto> getBoardsSortedBySweet() {
+        List<Board> boards =  boardRepository.findAllByOrderBySweetlASC();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
+    }
+
     private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
         List<BoardDto> boardDtoList = new ArrayList<>();
         for (Board board : boards) {

@@ -13,4 +13,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     // 도수순서대로 정렬해서 게시판을 가져옴
     @Query("SELECT b FROM Board b JOIN b.details d ORDER BY d.alcohol DESC")
     List<Board> findAllByOrderByAlcoholDesc();
+
+    @Query("SELECT b FROM Board b JOIN b.details d ORDER BY d.sweet ASC")
+    List<Board> findAllByOrderBySweetlASC();
 }
