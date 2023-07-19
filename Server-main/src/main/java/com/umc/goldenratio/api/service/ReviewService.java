@@ -8,10 +8,7 @@ import com.umc.goldenratio.api.domain.repository.ReviewRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.WriteReviewDto;
 import com.umc.goldenratio.api.dto.response.ReviewDto;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
