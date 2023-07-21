@@ -23,7 +23,7 @@ public class UsersController {
             @ApiResponse(code = 200, message = "success"),
             @ApiResponse(code = 409, message = "이미 존재하는 아이디입니다")
     })
-    @GetMapping(value = "/check/{user-id}", produces = "application/text;charset = utf-8")
+    @GetMapping(value = "/check/{user-id}", produces = "application.yml/text;charset = utf-8")
     public ResponseEntity<String> checkDuplicate(@PathVariable(name = "user-id") String userId) {
 
         usersService.checkDuplicate(userId);
@@ -31,7 +31,7 @@ public class UsersController {
     }
 
     @ApiOperation(value = "회원 가입")
-    @PostMapping(value = "/join", produces = "application/text;charset = utf-8")
+    @PostMapping(value = "/join", produces = "application.yml/text;charset = utf-8")
     public ResponseEntity<String> join(@RequestBody JoinRequestDto joinDto) {
         return ResponseEntity.ok().body(usersService.join(joinDto));
     }

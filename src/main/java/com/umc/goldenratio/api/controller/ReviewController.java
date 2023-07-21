@@ -1,21 +1,13 @@
 package com.umc.goldenratio.api.controller;
 
-import com.umc.goldenratio.api.domain.entity.Review;
-import com.umc.goldenratio.api.domain.entity.Users;
 import com.umc.goldenratio.api.dto.request.WriteReviewDto;
 import com.umc.goldenratio.api.dto.response.ReviewDto;
 import com.umc.goldenratio.api.service.ReviewService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +19,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @ApiOperation(value = "리뷰 작성")
-    @PostMapping(value= "/review/{boardId}", produces = "application/text;charset = utf-8")
+    @PostMapping(value= "/review/{boardId}", produces = "application.yml/text;charset = utf-8")
     public ResponseEntity<String> writeReview(@PathVariable Long boardId,
                                               @RequestBody WriteReviewDto writeReviewDto,
                                               Authentication authentication){
