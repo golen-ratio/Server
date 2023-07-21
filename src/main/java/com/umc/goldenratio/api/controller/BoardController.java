@@ -61,4 +61,10 @@ public class BoardController {
         return ResponseEntity.ok(sortedBoards);
     }
 
+    // 숙취해소 별점순 조회
+    @GetMapping("/golden-ratio/hangover/star")
+    public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByStar(){
+        List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByStar();
+        return ResponseEntity.ok(sortedBoards);
+    }
 }
