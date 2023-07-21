@@ -102,9 +102,13 @@ public class BoardService {
         return BoardDto.from(board);
     }
 
-   
-
-
-
+    // board id 를 통해서 숙취해소의 구체적인 게시판을 가져옴
+    public BoardDto getHangoverBoardDetails(Long boardId) {
+        Board board = boardRepository.findById(boardId).orElse(null);
+        if (board == null || !board.getCategory().equals("Hangover cure")) {
+            return null; // Board not found or it is not a hangover cure post
+        }
+        return BoardDto.from(board);
+    }
 
 }

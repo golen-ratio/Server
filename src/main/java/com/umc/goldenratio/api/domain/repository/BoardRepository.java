@@ -30,5 +30,9 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Query("SELECT b FROM Board b WHERE b.id = :boardId AND b.category = 'Cocktail'")
     Board findCocktailBoardById(Long boardId);
 
+    // board id 를 통해서 숙취해소의 구체적인 게시판을 가져옴
+    @Query("SELECT b FROM Board b WHERE b.id = :boardId AND b.category = 'Hangover'")
+    Board findHangoverBoardById(Long boardId);
+
     
 }

@@ -81,5 +81,16 @@ public class BoardController {
         return ResponseEntity.ok(boardDto);
     }
 
+    //숙취해소 상세 게시글 조회
+    @ApiOperation(value = "숙취해소 상세 게시글 조회")
+    @GetMapping(value = "/hangover/{board-id}", produces = "application/json;charset=utf-8")
+    public ResponseEntity<BoardDto> getHangoverBoardDetails(@PathVariable("board-id") Long boardId) {
+        BoardDto boardDto = boardService.getHangoverBoardDetails(boardId);
+        if (boardDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(boardDto);
+    }
+
      
 }
