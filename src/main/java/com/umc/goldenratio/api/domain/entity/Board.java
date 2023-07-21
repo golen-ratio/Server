@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,16 @@ public class Board extends BaseTimeEntity {
 
     @Column(name = "board_category")
     private String category;
+
+    @Column(name = "total_score")
+    private BigDecimal totalScore;
+    {
+        // 초기화 블록을 사용하여 totalScore를 0으로 초기화
+        totalScore = BigDecimal.ZERO;
+    }
+
+    @Column(name = "average_score")
+    private BigDecimal averageScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
@@ -73,5 +85,18 @@ public class Board extends BaseTimeEntity {
                 .category(category)
                 .users(users)
                 .build();
+    }
+
+    // 별점 평균 구하는 함수
+    public void updateAverageScore(BigDecimal newScore, int allReviewCount) {
+        if (reviews.isEmpty()) {
+            averageScore = BigDecimal.ZERO;
+        } else {
+            totalScore = totalScore.add(newScore);
+            System.out.println("리뷰 사이즈; "+ allReviewCount);
+            BigDecimal reviewCount = BigDecimal.valueOf(allReviewCount-1);
+
+            averageScore = totalScore.divide(reviewCount, 2, RoundingMode.HALF_EVEN);
+        }
     }
 }

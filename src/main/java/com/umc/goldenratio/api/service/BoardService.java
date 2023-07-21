@@ -79,4 +79,17 @@ public class BoardService {
         return boardDtoList;
     }
 
+    // 칵테일 게시판 별점순서대로 정렬
+    public List<BoardDto> getCocktailBoardsSortedByStar() {
+        List<Board> boards =  boardRepository.findAllByCocktailOrderByAverageScoreDesc();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
+    }
+
+    // 숙취해소 게시판 별점순서대로 정렬
+    public List<BoardDto> getHangoverBoardsSortedByStar() {
+        List<Board> boards =  boardRepository.findAllByHangoverOrderByAverageScoreDesc();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
+    }
 }
