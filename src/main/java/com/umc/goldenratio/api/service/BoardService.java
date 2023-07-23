@@ -49,7 +49,7 @@ public class BoardService {
         Board board = Board.toEntity(hangoverRequestDto.getTitle(),
                 hangoverRequestDto.getContent(),
                 hangoverRequestDto.getHangoverMainImageUrl(),
-                hangoverRequestDto.getCategory(), 
+                hangoverRequestDto.getCategory(),
                 users);
 
         boardRepository.save(board);
@@ -93,21 +93,17 @@ public class BoardService {
         return boardDtos;
     }
 
-    // 도수순서대로 정렬
-    public List<BoardDto> getBoardsSortedByAlcohol() {
-        List<Board> boards =  boardRepository.findAllByOrderByAlcoholDesc();
+    // 칵테일 게시판 좋아요순서대로 정렬
+    public List<BoardDto> getBoardsSortedByLike(String category) {
+        List<Board> boards = boardRepository.findAllByCocktailOrderByLikesDesc();
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
     }
 
-    private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
-        List<BoardDto> boardDtoList = new ArrayList<>();
-        for (Board board : boards) {
-            BoardDto boardDto = BoardDto.from(board);
-            boardDtoList.add(boardDto);
-        }
-        return boardDtoList;
+    // 숙취해소 게시판 좋아요순서대로 정렬
+    public List<BoardDto> getHangoverBoardsSortedByLike() {
+        List<Board> boards =  boardRepository.findAllByHangoverOrderByLikesDesc();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
     }
-
-
 }

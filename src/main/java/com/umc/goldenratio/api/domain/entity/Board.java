@@ -49,6 +49,9 @@ public class Board extends BaseTimeEntity {
     @Column(name = "average_score")
     private BigDecimal averageScore;
 
+    @Column(name = "likes_count")
+    private int likesCount;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
     private Users users;
@@ -98,5 +101,9 @@ public class Board extends BaseTimeEntity {
 
             averageScore = totalScore.divide(reviewCount, 2, RoundingMode.HALF_EVEN);
         }
+    }
+    // 좋아요 수 저장하는 함수
+    public void updateLikesCount() {
+        this.likesCount = likes.size();
     }
 }

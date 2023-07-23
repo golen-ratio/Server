@@ -25,6 +25,9 @@ public class Likes {
 
     public void setBoard(Board board) {
         this.board = board;
+        if (board != null) {
+            board.updateLikesCount();
+        }
     }
 
     public void setUsers(Users users) {

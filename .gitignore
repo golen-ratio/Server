@@ -19,7 +19,6 @@ bin/
 
 ### IntelliJ IDEA ###
 .idea
-.idea/
 *.iws
 *.iml
 *.ipr
@@ -41,4 +40,3 @@ out/
 ### application.yml 파일 ###
 application.yml
 
-.idea/

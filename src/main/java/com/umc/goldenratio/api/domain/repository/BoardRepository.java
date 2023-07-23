@@ -10,10 +10,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     //카테고리를 기반으로 게시판을 검색할 때 필요함
     //List<Board> findByCategoriesContaining(String category);
 
-    // 단맛순서대로 정렬해서 게시판을 가져옴
-    @Query("SELECT b FROM Board b JOIN b.details d ORDER BY d.alcohol DESC")
-    List<Board> findAllByOrderByAlcoholDesc();
-
     // 도수순서대로 정렬해서 게시판을 가져옴
     @Query("SELECT b FROM Board b JOIN b.details d ORDER BY d.alcohol DESC")
     List<Board> findAllByOrderByAlcoholDesc();
@@ -29,5 +25,13 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     // 숙취해소 게시판 중 별점순서로 정렬해서 게시판을 가져옴
     @Query("SELECT b FROM Board b WHERE b.category = '숙취해소' ORDER BY b.averageScore DESC")
     List<Board> findAllByHangoverOrderByAverageScoreDesc();
+
+    // 칵테일 게시판 좋아요순서대로 정렬
+    @Query("SELECT b FROM Board b WHERE b.category = '칵테일' ORDER BY SIZE(b.likes) DESC")
+    List<Board> findAllByCocktailOrderByLikesDesc();
+
+    // 숙취해소 게시판 좋아요순서대로 정렬
+    @Query("SELECT b FROM Board b WHERE b.category = '숙취해소' ORDER BY SIZE(b.likes) DESC")
+    List<Board> findAllByHangoverOrderByLikesDesc();
 
 }
