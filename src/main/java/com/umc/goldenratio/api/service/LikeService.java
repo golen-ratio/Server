@@ -4,6 +4,7 @@ import com.umc.goldenratio.api.domain.entity.Board;
 import com.umc.goldenratio.api.domain.entity.Likes;
 import com.umc.goldenratio.api.domain.entity.Users;
 import com.umc.goldenratio.api.domain.repository.LikeRepository;
+import com.umc.goldenratio.api.dto.response.LikeResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
