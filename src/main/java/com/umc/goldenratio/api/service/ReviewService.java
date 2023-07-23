@@ -49,6 +49,11 @@ public class ReviewService {
         // 리뷰 저장
         Review savedReview = reviewRepository.save(review);
 
+        // 리뷰가 저장된 후에 Board의 averageScore를 업데이트
+        board.getReviews().add(savedReview);
+        board.updateAverageScore(savedReview.getScore(),board.getReviews().size());
+        boardRepository.save(board);
+
         return "리뷰작성을 완료했습니다. 리뷰 id: " + savedReview.getId();
     }
 

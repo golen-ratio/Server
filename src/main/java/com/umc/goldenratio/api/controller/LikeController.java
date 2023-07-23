@@ -25,7 +25,7 @@ public class LikeController {
     private final LikeRepository likeRepository;
     private final LikeService likeService;
 
-    @PostMapping("/review/{boardId}")
+    @PostMapping("/like/{boardId}")
     public void toggleLike(Authentication authentication, @PathVariable Long boardId) {
         String userId = authentication.getName();
         Users users = usersRepository.findById(Long.valueOf(userId))

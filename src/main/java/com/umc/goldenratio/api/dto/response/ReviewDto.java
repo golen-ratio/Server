@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +17,7 @@ public class ReviewDto {
     private Long boardId;
     private Long userId;
     private String content;
-    private int score;
+    private BigDecimal score;
 
     public static ReviewDto createReviewDto(Review review) {
         return new ReviewDto(

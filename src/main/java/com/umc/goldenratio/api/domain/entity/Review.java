@@ -4,6 +4,7 @@ import com.umc.goldenratio.common.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -20,7 +21,7 @@ public class Review extends BaseTimeEntity {
     private String content;
 
     @Column(name = "review_score")
-    private int score;
+    private BigDecimal score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
