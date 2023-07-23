@@ -67,4 +67,20 @@ public class BoardController {
         List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByStar();
         return ResponseEntity.ok(sortedBoards);
     }
+
+    // 칵테일 게시판 좋아요순 조회
+    @GetMapping("/golden-ratio/cocktail/like")
+    public ResponseEntity<List<BoardDto>> getCocktailBoardsSortedByLike() {
+        List<BoardDto> sortedBoards = boardService.getBoardsSortedByLike("cocktail");
+        return ResponseEntity.ok(sortedBoards);
+    }
+
+    // 숙취해소 게시판 좋아요순 조회
+    @GetMapping("/golden-ratio/hangover/like")
+    public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByLike() {
+        List<BoardDto> sortedBoards = boardService.getBoardsSortedByLike("hangover");
+        return ResponseEntity.ok(sortedBoards);
+    }
 }
+
+

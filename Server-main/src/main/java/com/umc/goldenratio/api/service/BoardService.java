@@ -92,4 +92,18 @@ public class BoardService {
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
     }
+
+    // 칵테일 게시판 좋아요순서대로 정렬
+    public List<BoardDto> getBoardsSortedByLike(String category) {
+        List<Board> boards = boardRepository.findAllByCocktailOrderByLikesDesc();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
+    }
+
+    // 숙취해소 게시판 좋아요순서대로 정렬
+    public List<BoardDto> getHangoverBoardsSortedByLike() {
+        List<Board> boards =  boardRepository.findAllByHangoverOrderByLikesDesc();
+        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        return boardDtos;
+    }
 }

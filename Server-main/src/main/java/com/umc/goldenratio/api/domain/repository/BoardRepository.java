@@ -26,4 +26,12 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Query("SELECT b FROM Board b WHERE b.category = '숙취해소' ORDER BY b.averageScore DESC")
     List<Board> findAllByHangoverOrderByAverageScoreDesc();
 
+    // 칵테일 게시판 좋아요순서대로 정렬
+    @Query("SELECT b FROM Board b WHERE b.category = '칵테일' ORDER BY SIZE(b.likes) DESC")
+    List<Board> findAllByCocktailOrderByLikesDesc();
+
+    // 숙취해소 게시판 좋아요순서대로 정렬
+    @Query("SELECT b FROM Board b WHERE b.category = '숙취해소' ORDER BY SIZE(b.likes) DESC")
+    List<Board> findAllByHangoverOrderByLikesDesc();
+
 }
