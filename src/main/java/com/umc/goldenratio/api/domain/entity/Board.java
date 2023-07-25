@@ -49,9 +49,15 @@ public class Board extends BaseTimeEntity {
     @Column(name = "average_score")
     private BigDecimal averageScore;
 
+    @Column(name = "comment_count")
+    private Long commentCount;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
     private Users users;
+
+    @ElementCollection
+    private List<String> recipe;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Likes> likes = new ArrayList<>();
@@ -99,4 +105,13 @@ public class Board extends BaseTimeEntity {
             averageScore = totalScore.divide(reviewCount, 2, RoundingMode.HALF_EVEN);
         }
     }
+
+    public int getAlcohol() {
+        if (details == null || details.isEmpty()) {
+            return 0;
+        }
+        return details.get(0).getAlcohol();
+    }
+
+   
 }
