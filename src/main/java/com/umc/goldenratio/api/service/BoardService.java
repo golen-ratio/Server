@@ -6,6 +6,7 @@ import com.umc.goldenratio.api.domain.repository.BalanceRepository;
 import com.umc.goldenratio.api.domain.repository.BoardRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
+import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
@@ -13,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,8 +73,11 @@ public class BoardService {
     private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
         List<BoardDto> boardDtoList = new ArrayList<>();
         for (Board board : boards) {
-            BoardDto boardDto = BoardDto.from(board);
-            boardDtoList.add(boardDto);
+            if (board.getCategory().equals("Cocktail")) {
+                boardDtoList.add(BoardDto.fromCocktail(board));
+            } else if (board.getCategory().equals("Hangover")) {
+                boardDtoList.add(BoardDto.fromHangover(board));
+            }
         }
         return boardDtoList;
     }
@@ -106,4 +109,22 @@ public class BoardService {
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
     }
+    // board id 를 통해서 칵테일의 구체적인 게시판을 가져옴
+    public BoardDto getCocktailBoardDetails(Long boardId) {
+        Board board = boardRepository.findById(boardId).orElse(null);
+        if (board == null || !board.getCategory().equals("Cocktail")) {
+            return null; 
+        }
+        return BoardDto.fromCocktail(board);
+    }
+
+    // board id 를 통해서 숙취해소의 구체적인 게시판을 가져옴
+    public BoardDto getHangoverBoardDetails(Long boardId) {
+        Board board = boardRepository.findById(boardId).orElse(null);
+        if (board == null || !board.getCategory().equals("Hangover")) {
+            return null; 
+        }
+        return BoardDto.fromHangover(board);
+    }
+
 }

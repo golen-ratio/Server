@@ -49,12 +49,20 @@ public class Board extends BaseTimeEntity {
     @Column(name = "average_score")
     private BigDecimal averageScore;
 
+<<<<<<< HEAD
     @Column(name = "likes_count")
     private int likesCount;
+=======
+    @Column(name = "comment_count")
+    private Long commentCount;
+>>>>>>> feature/posting/품바
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
     private Users users;
+
+    @ElementCollection
+    private List<String> recipe;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Likes> likes = new ArrayList<>();
@@ -102,8 +110,20 @@ public class Board extends BaseTimeEntity {
             averageScore = totalScore.divide(reviewCount, 2, RoundingMode.HALF_EVEN);
         }
     }
+<<<<<<< HEAD
     // 좋아요 수 저장하는 함수
     public void updateLikesCount() {
         this.likesCount = likes.size();
     }
+=======
+
+    public int getAlcohol() {
+        if (details == null || details.isEmpty()) {
+            return 0;
+        }
+        return details.get(0).getAlcohol();
+    }
+
+   
+>>>>>>> feature/posting/품바
 }

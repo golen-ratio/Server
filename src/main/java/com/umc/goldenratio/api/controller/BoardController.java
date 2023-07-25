@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 
@@ -81,6 +83,28 @@ public class BoardController {
         List<BoardDto> sortedBoards = boardService.getBoardsSortedByLike("hangover");
         return ResponseEntity.ok(sortedBoards);
     }
+
+    //칵테일 상세게시글 조회
+    @ApiOperation(value = "칵테일 상세 게시글 조회")
+    @GetMapping(value = "/cocktail/{board-id}", produces = "application/json;charset=utf-8")
+    public ResponseEntity<BoardDto> getCocktailBoardDetails(@PathVariable("board-id") Long boardId) {
+        BoardDto boardDto = boardService.getCocktailBoardDetails(boardId);
+        if (boardDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(boardDto);
+    }
+
+    //숙취해소 상세 게시글 조회
+    @ApiOperation(value = "숙취해소 상세 게시글 조회")
+    @GetMapping(value = "/hangover/{board-id}", produces = "application/json;charset=utf-8")
+    public ResponseEntity<BoardDto> getHangoverBoardDetails(@PathVariable("board-id") Long boardId) {
+        BoardDto boardDto = boardService.getHangoverBoardDetails(boardId);
+        if (boardDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(boardDto);
+    }
+
+     
 }
-
-
