@@ -73,9 +73,9 @@ public class BoardService {
     private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
         List<BoardDto> boardDtoList = new ArrayList<>();
         for (Board board : boards) {
-            if (board.getCategory().equals("Cocktail")) {
+            if (board.getCategory().equals("칵테일")) {
                 boardDtoList.add(BoardDto.fromCocktail(board));
-            } else if (board.getCategory().equals("Hangover")) {
+            } else if (board.getCategory().equals("숙취해소")) {
                 boardDtoList.add(BoardDto.fromHangover(board));
             }
         }
