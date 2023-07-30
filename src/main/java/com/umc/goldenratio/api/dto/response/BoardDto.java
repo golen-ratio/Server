@@ -18,7 +18,7 @@ public class BoardDto  {
     private String content;
     private String mainImage;
     private String category;
-    private BigDecimal averageScore;
+    private double averageScore;
     private int alcohol;
     private Long likes;
     private List<String> recipe;

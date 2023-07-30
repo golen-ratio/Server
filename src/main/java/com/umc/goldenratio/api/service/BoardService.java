@@ -35,7 +35,10 @@ public class BoardService {
         Board board = Board.toEntity(cocktailRequestDto.getTitle(),
                 cocktailRequestDto.getContent(),
                 cocktailRequestDto.getCocktailMainImageUrl(),
-                cocktailRequestDto.getCategory(), users);
+                cocktailRequestDto.getCategory(),
+                (double) 0,
+                (double) 0,
+                users);
 
         boardRepository.save(board);
         mappingService.save(cocktailRequestDto.getGradientList(), board);
@@ -50,6 +53,8 @@ public class BoardService {
                 hangoverRequestDto.getContent(),
                 hangoverRequestDto.getHangoverMainImageUrl(),
                 hangoverRequestDto.getCategory(),
+                (double) 0,
+                (double) 0,
                 users);
 
         boardRepository.save(board);

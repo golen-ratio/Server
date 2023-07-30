@@ -120,5 +120,7 @@ public class BoardController {
         return ResponseEntity.ok(boardDto);
     }
 
+//    @GetMapping("/golden-ratio/cocktail/all")
+//    public
      
 }

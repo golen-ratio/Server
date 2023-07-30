@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Builder
 public class WriteReviewDto {
     private String content;
-    private BigDecimal score;
+    private double score;
 
 
 }

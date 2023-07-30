@@ -40,14 +40,10 @@ public class Board extends BaseTimeEntity {
     private String category;
 
     @Column(name = "total_score")
-    private BigDecimal totalScore;
-    {
-        // 초기화 블록을 사용하여 totalScore를 0으로 초기화
-        totalScore = BigDecimal.ZERO;
-    }
+    private double totalScore;
 
     @Column(name = "average_score")
-    private BigDecimal averageScore;
+    private double averageScore;
 
     @Column(name = "likes_count")
     private int likesCount;
@@ -77,20 +73,24 @@ public class Board extends BaseTimeEntity {
     private List<Mapping> mappings = new ArrayList<>();
 
     @Builder
-    public Board(String title, String content, String mainImage, String category, Users users) {
+    public Board(String title, String content, String mainImage, String category, Double averageScore, Double totalScore, Users users) {
         this.title = title;
         this.content = content;
         this.mainImage = mainImage;
         this.category = category;
+        this.averageScore = averageScore;
+        this.totalScore = totalScore;
         this.users = users;
     }
 
-    public static Board toEntity(String title, String content, String mainImage, String category, Users users) {
+    public static Board toEntity(String title, String content, String mainImage, String category, Double averageScore, Double totalScore, Users users) {
         return Board.builder()
                 .title(title)
                 .content(content)
                 .mainImage(mainImage)
                 .category(category)
+                .averageScore(averageScore)
+                .totalScore(totalScore)
                 .users(users)
                 .build();
     }
@@ -104,16 +104,12 @@ public class Board extends BaseTimeEntity {
     }
 
     // 별점 평균 구하는 함수
-    public void updateAverageScore(BigDecimal newScore, int allReviewCount) {
-        if (reviews.isEmpty()) {
-            averageScore = BigDecimal.ZERO;
-        } else {
-            totalScore = totalScore.add(newScore);
-            System.out.println("리뷰 사이즈; "+ allReviewCount);
-            BigDecimal reviewCount = BigDecimal.valueOf(allReviewCount-1);
-
-            averageScore = totalScore.divide(reviewCount, 2, RoundingMode.HALF_EVEN);
-        }
+    public void updateAverageScore(double newScore, int allReviewCount) {
+        totalScore += newScore;
+        System.out.println("totalScore = " + totalScore);
+        System.out.println("allReviewCount = " + allReviewCount);
+        averageScore = totalScore / (double) allReviewCount;
+        this.averageScore = Math.round(averageScore * 10.0) / 10.0;
     }
     // 좋아요 수 저장하는 함수
     public void updateLikesCount() {

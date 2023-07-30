@@ -21,7 +21,7 @@ public class Review extends BaseTimeEntity {
     private String content;
 
     @Column(name = "review_score")
-    private BigDecimal score;
+    private double score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
