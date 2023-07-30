@@ -92,7 +92,7 @@
       <recent name="E:\SERVERMAIN\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GoldenratioApplication">
+  <component name="RunManager" selected="Application.goldenserverApplication">
     <configuration name="goldenserverApplication" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="MAIN_CLASS_NAME" value="com.umc.goldenratio.GoldenratioApplication" />
@@ -108,6 +108,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.goldenserverApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
