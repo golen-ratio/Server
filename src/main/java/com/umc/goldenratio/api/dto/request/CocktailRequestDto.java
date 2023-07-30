@@ -14,7 +14,7 @@ public class CocktailRequestDto {
     private String category;
     private int sweet;
     private int alcohol;
-    private List<GradientRequestDto> gradientList;
+    private List<IngredientRequestDto> gradientList;
     private List<BalanceRequestDto> balanceList;
 
 }

@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class GradientRequestDto {
+public class IngredientRequestDto {
     private String gradientName;
     private String gradientImageUrl;
 }

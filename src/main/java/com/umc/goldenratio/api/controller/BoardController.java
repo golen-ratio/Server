@@ -4,6 +4,7 @@ import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
 import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
+import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
 import com.umc.goldenratio.api.service.BoardService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -131,6 +132,12 @@ public class BoardController {
     public ResponseEntity<List<AllBoardListResponseDto>> getAllHangoverBoards(Authentication authentication) {
         List<AllBoardListResponseDto> allBoards = boardService.getAllHangoverBoards();
         return ResponseEntity.ok().body(allBoards);
+    }
+
+    @GetMapping("/golden-ratio/search")
+    public ResponseEntity<IngredientResponseDto> searchGradient(Authentication authentication, @RequestParam String name) {
+        IngredientResponseDto ingredientResponseDto = boardService.searchGradient(name);
+        return ResponseEntity.ok().body(ingredientResponseDto);
     }
      
 }

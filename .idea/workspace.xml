@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FEAT] : 칵테일 게시판 전체조회">
+    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FEAT] : 숙취해소 게시판 전체조회">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/IngredientResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/repository/BoardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/AllBoardListResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/AllBoardListResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/CocktailRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/CocktailRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/GradientRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/IngredientRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/HangoverRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/HangoverRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/GradientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/GradientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/MappingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/MappingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/ErrorCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +86,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -112,7 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690102829580</updated>
-      <workItem from="1690730935472" duration="7835000" />
+      <workItem from="1690730935472" duration="9143000" />
     </task>
     <task id="LOCAL-00001" summary="[FIX] : 카테고리 이름 통일, 충돌코드 삭제">
       <created>1690706047677</created>
@@ -149,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690738890261</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="[FEAT] : 칵테일 게시판 전체조회">
+      <created>1690739843990</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690739843990</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[FEAT] : 숙취해소 게시판 전체조회">
+      <created>1690740056530</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1690740056530</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +204,8 @@
     <MESSAGE value="[FEAT] : 칵테일, 숙취해소 게시판 수정" />
     <MESSAGE value="[FIX] : 상세조회 API URI 수정" />
     <MESSAGE value="[ADD] : 리뷰 평균값 업데이트 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] : 리뷰 평균값 업데이트 수정" />
+    <MESSAGE value="[FEAT] : 칵테일 게시판 전체조회" />
+    <MESSAGE value="[FEAT] : 숙취해소 게시판 전체조회" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FEAT] : 숙취해소 게시판 전체조회" />
   </component>
 </project>
