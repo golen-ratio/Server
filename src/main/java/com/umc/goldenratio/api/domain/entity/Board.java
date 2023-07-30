@@ -49,13 +49,10 @@ public class Board extends BaseTimeEntity {
     @Column(name = "average_score")
     private BigDecimal averageScore;
 
-<<<<<<< HEAD
     @Column(name = "likes_count")
     private int likesCount;
-=======
     @Column(name = "comment_count")
     private Long commentCount;
->>>>>>> feature/posting/품바
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
@@ -110,12 +107,10 @@ public class Board extends BaseTimeEntity {
             averageScore = totalScore.divide(reviewCount, 2, RoundingMode.HALF_EVEN);
         }
     }
-<<<<<<< HEAD
     // 좋아요 수 저장하는 함수
     public void updateLikesCount() {
         this.likesCount = likes.size();
     }
-=======
 
     public int getAlcohol() {
         if (details == null || details.isEmpty()) {
@@ -125,5 +120,4 @@ public class Board extends BaseTimeEntity {
     }
 
    
->>>>>>> feature/posting/품바
 }
