@@ -2,6 +2,7 @@ package com.umc.goldenratio.api.controller;
 
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
+import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.api.service.BoardService;
 import io.swagger.annotations.ApiOperation;
@@ -120,7 +121,10 @@ public class BoardController {
         return ResponseEntity.ok(boardDto);
     }
 
-//    @GetMapping("/golden-ratio/cocktail/all")
-//    public
+    @GetMapping("/golden-ratio/cocktail/all")
+    public ResponseEntity<List<AllBoardListResponseDto>> getAllCocktailBoards(Authentication authentication) {
+        List<AllBoardListResponseDto> allBoards = boardService.getAllCocktailBoards();
+        return ResponseEntity.ok().body(allBoards);
+    }
      
 }

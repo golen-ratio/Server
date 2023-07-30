@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FIX] : 상세조회 API URI 수정">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/AllBoardListResponseDto.java" afterDir="false" />
+    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FEAT] : 칵테일 게시판 전체조회">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/WriteReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/WriteReviewDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/BoardDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/BoardDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/ReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/ReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/repository/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/AllBoardListResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/AllBoardListResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/ReviewService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690102829580</updated>
-      <workItem from="1690730935472" duration="6947000" />
+      <workItem from="1690730935472" duration="7835000" />
     </task>
     <task id="LOCAL-00001" summary="[FIX] : 카테고리 이름 통일, 충돌코드 삭제">
       <created>1690706047677</created>
@@ -147,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690736443534</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[ADD] : 리뷰 평균값 업데이트 수정">
+      <created>1690738890261</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1690738890261</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +183,7 @@
     <MESSAGE value="[FIX] : 카테고리 이름 통일" />
     <MESSAGE value="[FEAT] : 칵테일, 숙취해소 게시판 수정" />
     <MESSAGE value="[FIX] : 상세조회 API URI 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] : 상세조회 API URI 수정" />
+    <MESSAGE value="[ADD] : 리뷰 평균값 업데이트 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] : 리뷰 평균값 업데이트 수정" />
   </component>
 </project>

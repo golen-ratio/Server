@@ -1,12 +1,14 @@
 package com.umc.goldenratio.api.service;
 
 import com.umc.goldenratio.api.domain.entity.Board;
+import com.umc.goldenratio.api.domain.entity.Review;
 import com.umc.goldenratio.api.domain.entity.Users;
 import com.umc.goldenratio.api.domain.repository.BalanceRepository;
 import com.umc.goldenratio.api.domain.repository.BoardRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
+import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
@@ -156,5 +158,16 @@ public class BoardService {
                 hangoverRequestDto.getCategory(), users);
         boardRepository.save(board);
         mappingService.update(hangoverRequestDto.getGradientList(), board);
+    }
+
+    public List<AllBoardListResponseDto> getAllCocktailBoards() {
+        List<Board> boards = boardRepository.findAllByCategoryOrderByCreatedDateDesc("칵테일");
+        List<AllBoardListResponseDto> allBoardListResponseDtos = new ArrayList<>();
+        for (Board board : boards) {
+            int likeCount = board.getLikes().size();
+            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImage(), board.getAverageScore(), likeCount);
+            allBoardListResponseDtos.add(allBoardListResponseDto);
+        }
+        return allBoardListResponseDtos;
     }
 }
