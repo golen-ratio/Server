@@ -28,7 +28,7 @@ public class LikeController {
     @PostMapping("/like/{boardId}")
     public void toggleLike(Authentication authentication, @PathVariable Long boardId) {
         String userId = authentication.getName();
-        Users users = usersRepository.findById(Long.valueOf(userId))
+        Users users = usersRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
         Board board = boardRepository.findById(boardId)
                 .orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
