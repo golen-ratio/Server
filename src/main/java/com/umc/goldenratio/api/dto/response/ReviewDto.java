@@ -17,7 +17,7 @@ public class ReviewDto {
     private Long boardId;
     private Long userId;
     private String content;
-    private BigDecimal score;
+    private double score;
 
     public static ReviewDto createReviewDto(Review review) {
         return new ReviewDto(
