@@ -100,7 +100,7 @@ public class BoardController {
 
     //칵테일 상세게시글 조회
     @ApiOperation(value = "칵테일 상세 게시글 조회")
-    @GetMapping(value = "/cocktail/{board-id}", produces = "application/json;charset=utf-8")
+    @GetMapping(value = "golden-ratio/cocktail/{board-id}", produces = "application/json;charset=utf-8")
     public ResponseEntity<BoardDto> getCocktailBoardDetails(@PathVariable("board-id") Long boardId) {
         BoardDto boardDto = boardService.getCocktailBoardDetails(boardId);
         if (boardDto == null) {
@@ -111,7 +111,7 @@ public class BoardController {
 
     //숙취해소 상세 게시글 조회
     @ApiOperation(value = "숙취해소 상세 게시글 조회")
-    @GetMapping(value = "/hangover/{board-id}", produces = "application/json;charset=utf-8")
+    @GetMapping(value = "/golden-ratio/hangover/{board-id}", produces = "application/json;charset=utf-8")
     public ResponseEntity<BoardDto> getHangoverBoardDetails(@PathVariable("board-id") Long boardId) {
         BoardDto boardDto = boardService.getHangoverBoardDetails(boardId);
         if (boardDto == null) {
