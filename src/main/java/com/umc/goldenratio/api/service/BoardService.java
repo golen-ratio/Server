@@ -112,7 +112,7 @@ public class BoardService {
     // board id 를 통해서 칵테일의 구체적인 게시판을 가져옴
     public BoardDto getCocktailBoardDetails(Long boardId) {
         Board board = boardRepository.findById(boardId).orElse(null);
-        if (board == null || !board.getCategory().equals("Cocktail")) {
+        if (board == null || !board.getCategory().equals("칵테일")) {
             return null; 
         }
         return BoardDto.fromCocktail(board);
@@ -121,7 +121,7 @@ public class BoardService {
     // board id 를 통해서 숙취해소의 구체적인 게시판을 가져옴
     public BoardDto getHangoverBoardDetails(Long boardId) {
         Board board = boardRepository.findById(boardId).orElse(null);
-        if (board == null || !board.getCategory().equals("Hangover")) {
+        if (board == null || !board.getCategory().equals("숙취해소")) {
             return null; 
         }
         return BoardDto.fromHangover(board);
