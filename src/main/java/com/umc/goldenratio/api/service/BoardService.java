@@ -127,4 +127,29 @@ public class BoardService {
         return BoardDto.fromHangover(board);
     }
 
+    @Transactional
+    public void updateCocktail(Authentication authentication, Long boardId, CocktailRequestDto cocktailRequestDto) {
+        Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
+        board.update(cocktailRequestDto.getTitle(),
+                cocktailRequestDto.getContent(),
+                cocktailRequestDto.getCocktailMainImageUrl(),
+                cocktailRequestDto.getCategory(), users);
+        boardRepository.save(board);
+        mappingService.update(cocktailRequestDto.getGradientList(), board);
+        balanceService.update(cocktailRequestDto.getBalanceList(), board);
+        detailService.update(cocktailRequestDto.getSweet(),cocktailRequestDto.getAlcohol(), board);
+    }
+
+    @Transactional
+    public void updateHangover(Authentication authentication, Long boardId, HangoverRequestDto hangoverRequestDto) {
+        Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
+        board.update(hangoverRequestDto.getTitle(),
+                hangoverRequestDto.getContent(),
+                hangoverRequestDto.getHangoverMainImageUrl(),
+                hangoverRequestDto.getCategory(), users);
+        boardRepository.save(board);
+        mappingService.update(hangoverRequestDto.getGradientList(), board);
+    }
 }

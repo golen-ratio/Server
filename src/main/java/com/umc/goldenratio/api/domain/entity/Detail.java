@@ -42,4 +42,9 @@ public class Detail {
                 .build();
     }
 
+    public void update(int sweet, int alcohol, Board board){
+        this.sweet = sweet;
+        this.alcohol = alcohol;
+        this.board = board;
+    }
 }

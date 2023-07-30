@@ -8,11 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -40,6 +36,24 @@ public class BoardController {
 
         boardService.createHangover(authentication, hangoverRequestDto);
         return ResponseEntity.ok().body("숙취해소 게시글이 성공적으로 등록되었습니다.");
+    }
+
+    @PutMapping(value = "/golden-ratio/cocktail/{board-id}", produces = "application/text;charset = utf-8")
+    public ResponseEntity<String> updateBoard(Authentication authentication,
+                                              @PathVariable("board-id") Long boardId,
+                                              @RequestBody CocktailRequestDto cocktailRequestDto){
+
+        boardService.updateCocktail(authentication, boardId, cocktailRequestDto);
+        return ResponseEntity.ok().body("칵테일 게시글이 성공적으로 수정되었습니다.");
+    }
+
+    @PutMapping(value = "/golden-ratio/hangover/{board-id}", produces = "application/text;charset = utf-8")
+    public ResponseEntity<String> updateBoard(Authentication authentication,
+                                              @PathVariable("board-id") Long boardId,
+                                              @RequestBody HangoverRequestDto hangoverRequestDto){
+
+        boardService.updateHangover(authentication, boardId, hangoverRequestDto);
+        return ResponseEntity.ok().body("숙취해소 게시글이 성공적으로 수정되었습니다.");
     }
 
     // 도수순서대로 정렬

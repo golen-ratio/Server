@@ -95,6 +95,14 @@ public class Board extends BaseTimeEntity {
                 .build();
     }
 
+    public void update(String title, String content, String mainImage, String category, Users users) {
+        this.title = title;
+        this.content = content;
+        this.mainImage = mainImage;
+        this.category = category;
+        this.users = users;
+    }
+
     // 별점 평균 구하는 함수
     public void updateAverageScore(BigDecimal newScore, int allReviewCount) {
         if (reviews.isEmpty()) {
