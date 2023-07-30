@@ -126,5 +126,11 @@ public class BoardController {
         List<AllBoardListResponseDto> allBoards = boardService.getAllCocktailBoards();
         return ResponseEntity.ok().body(allBoards);
     }
+
+    @GetMapping("/golden-ratio/hangover/all")
+    public ResponseEntity<List<AllBoardListResponseDto>> getAllHangoverBoards(Authentication authentication) {
+        List<AllBoardListResponseDto> allBoards = boardService.getAllHangoverBoards();
+        return ResponseEntity.ok().body(allBoards);
+    }
      
 }

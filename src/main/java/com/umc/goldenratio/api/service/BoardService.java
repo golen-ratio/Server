@@ -170,4 +170,15 @@ public class BoardService {
         }
         return allBoardListResponseDtos;
     }
+
+    public List<AllBoardListResponseDto> getAllHangoverBoards() {
+        List<Board> boards = boardRepository.findAllByCategoryOrderByCreatedDateDesc("숙취해소");
+        List<AllBoardListResponseDto> allBoardListResponseDtos = new ArrayList<>();
+        for(Board board : boards) {
+            int likeCount = board.getLikes().size();
+            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImage(), board.getAverageScore(), likeCount);
+            allBoardListResponseDtos.add(allBoardListResponseDto);
+        }
+        return allBoardListResponseDtos;
+    }
 }
