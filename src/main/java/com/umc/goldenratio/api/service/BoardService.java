@@ -1,13 +1,18 @@
 package com.umc.goldenratio.api.service;
 
 import com.umc.goldenratio.api.domain.entity.Board;
+import com.umc.goldenratio.api.domain.entity.Gradient;
+import com.umc.goldenratio.api.domain.entity.Review;
 import com.umc.goldenratio.api.domain.entity.Users;
 import com.umc.goldenratio.api.domain.repository.BalanceRepository;
 import com.umc.goldenratio.api.domain.repository.BoardRepository;
+import com.umc.goldenratio.api.domain.repository.GradientRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
+import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
+import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +33,7 @@ public class BoardService {
     private final MappingService mappingService;
     private final BalanceService balanceService;
     private final DetailService detailService;
+    private final GradientRepository gradientRepository;
 
     @Transactional
     public void createCocktail(Authentication authentication, CocktailRequestDto cocktailRequestDto) {
@@ -156,5 +162,32 @@ public class BoardService {
                 hangoverRequestDto.getCategory(), users);
         boardRepository.save(board);
         mappingService.update(hangoverRequestDto.getGradientList(), board);
+    }
+
+    public List<AllBoardListResponseDto> getAllCocktailBoards() {
+        List<Board> boards = boardRepository.findAllByCategoryOrderByCreatedDateDesc("칵테일");
+        List<AllBoardListResponseDto> allBoardListResponseDtos = new ArrayList<>();
+        for (Board board : boards) {
+            int likeCount = board.getLikes().size();
+            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImage(), board.getAverageScore(), likeCount);
+            allBoardListResponseDtos.add(allBoardListResponseDto);
+        }
+        return allBoardListResponseDtos;
+    }
+
+    public List<AllBoardListResponseDto> getAllHangoverBoards() {
+        List<Board> boards = boardRepository.findAllByCategoryOrderByCreatedDateDesc("숙취해소");
+        List<AllBoardListResponseDto> allBoardListResponseDtos = new ArrayList<>();
+        for(Board board : boards) {
+            int likeCount = board.getLikes().size();
+            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImage(), board.getAverageScore(), likeCount);
+            allBoardListResponseDtos.add(allBoardListResponseDto);
+        }
+        return allBoardListResponseDtos;
+    }
+
+    public IngredientResponseDto searchGradient(String name) {
+        Gradient gradient = gradientRepository.findByGradientName(name).orElseThrow(() -> new CustomException(ErrorCode.INGREDIENT_NOT_FOUND));
+        return IngredientResponseDto.of(gradient.getGradientName(), gradient.getGradientImageUrl());
     }
 }

@@ -14,6 +14,6 @@ public class HangoverRequestDto {
     private String hangoverMainImageUrl;
     private String content;
     private String category;
-    private List<GradientRequestDto> gradientList;
+    private List<IngredientRequestDto> gradientList;
     
 }

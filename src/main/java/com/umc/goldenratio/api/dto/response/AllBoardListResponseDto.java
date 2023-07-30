@@ -13,7 +13,16 @@ public class AllBoardListResponseDto {
     private Long BoardId;
     private String title;
     private String mainImageUrl;
-    private float averageScore;
-    private int starCount;
+    private double averageScore;
+    private int likeCount;
 
+    public static AllBoardListResponseDto of(Long BoardId, String title, String mainImageUrl, double averageScore, int likeCount) {
+        return AllBoardListResponseDto.builder()
+                .BoardId(BoardId)
+                .title(title)
+                .mainImageUrl(mainImageUrl)
+                .averageScore(averageScore)
+                .likeCount(likeCount)
+                .build();
+    }
 }

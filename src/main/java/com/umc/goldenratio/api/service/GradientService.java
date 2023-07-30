@@ -2,7 +2,7 @@ package com.umc.goldenratio.api.service;
 
 import com.umc.goldenratio.api.domain.entity.Gradient;
 import com.umc.goldenratio.api.domain.repository.GradientRepository;
-import com.umc.goldenratio.api.dto.request.GradientRequestDto;
+import com.umc.goldenratio.api.dto.request.IngredientRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class GradientService {
         return gradientRepository.findByGradientName(gradientName);
     }
 
-    public Gradient save(GradientRequestDto gradient) {
+    public Gradient save(IngredientRequestDto gradient) {
         return gradientRepository.save(Gradient.toEntity(gradient.getGradientName(), gradient.getGradientImageUrl()));
     }
 }

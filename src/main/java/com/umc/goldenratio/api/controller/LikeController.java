@@ -9,6 +9,7 @@ import com.umc.goldenratio.api.service.LikeService;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +26,8 @@ public class LikeController {
     private final LikeRepository likeRepository;
     private final LikeService likeService;
 
-    @PostMapping("/like/{boardId}")
-    public void toggleLike(Authentication authentication, @PathVariable Long boardId) {
+    @PostMapping(value = "/like/{boardId}", produces = "application/json;charset=utf-8")
+    public ResponseEntity<String> toggleLike(Authentication authentication, @PathVariable Long boardId) {
         String userId = authentication.getName();
         Users users = usersRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
@@ -34,6 +35,7 @@ public class LikeController {
                 .orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
 
         likeService.toggleLike(board, users);
+        return ResponseEntity.ok().body("성공적으로 좋아요가 등록되었습니다.");
     }
 }
 

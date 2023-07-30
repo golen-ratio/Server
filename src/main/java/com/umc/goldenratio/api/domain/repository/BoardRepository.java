@@ -42,5 +42,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Query("SELECT b FROM Board b WHERE b.id = :boardId AND b.category = 'Hangover'")
     Board findHangoverBoardById(Long boardId);
 
-    
+
+    List<Board> findAllByCategoryOrderByCreatedDateDesc(String category);
 }
