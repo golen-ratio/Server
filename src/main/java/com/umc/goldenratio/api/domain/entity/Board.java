@@ -47,6 +47,7 @@ public class Board extends BaseTimeEntity {
 
     @Column(name = "likes_count")
     private int likesCount;
+
     @Column(name = "comment_count")
     private Long commentCount;
 
@@ -123,5 +124,7 @@ public class Board extends BaseTimeEntity {
         return details.get(0).getAlcohol();
     }
 
-   
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
 }

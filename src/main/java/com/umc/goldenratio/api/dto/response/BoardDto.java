@@ -20,7 +20,7 @@ public class BoardDto  {
     private String category;
     private double averageScore;
     private int alcohol;
-    private Long likes;
+    private int likesCount;
     private List<String> recipe;
     private List<Review> reviews;
     private Long userId;
@@ -41,7 +41,7 @@ public class BoardDto  {
     public static BoardDto fromCocktail(Board board) {
         BoardDto boardDto = from(board);
         boardDto.setAlcohol(board.getAlcohol());
-        boardDto.setLikes((long) board.getLikes().size());
+        boardDto.setLikesCount(board.getLikes().size());
         boardDto.setRecipe(board.getRecipe());
         boardDto.setReviews(board.getReviews());
         return boardDto;
@@ -50,7 +50,7 @@ public class BoardDto  {
     // 숙취해소 게시판 구조
     public static BoardDto fromHangover(Board board) {
         BoardDto boardDto = from(board);
-        boardDto.setLikes((long) board.getLikes().size());
+        boardDto.setLikesCount(board.getLikes().size());
         boardDto.setRecipe(board.getRecipe());
         boardDto.setReviews(board.getReviews());
         return boardDto;

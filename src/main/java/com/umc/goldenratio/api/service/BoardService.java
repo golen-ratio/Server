@@ -108,14 +108,14 @@ public class BoardService {
     }
 
     // 칵테일 게시판 좋아요순서대로 정렬
-    public List<BoardDto> getBoardsSortedByLike(String category) {
+    public List<BoardDto> getCocktailBoardsSortedByLike(String category) {
         List<Board> boards = boardRepository.findAllByCocktailOrderByLikesDesc();
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 숙취해소 게시판 좋아요순서대로 정렬
-    public List<BoardDto> getHangoverBoardsSortedByLike() {
+    public List<BoardDto> getHangoverBoardsSortedByLike(String category) {
         List<Board> boards =  boardRepository.findAllByHangoverOrderByLikesDesc();
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
@@ -125,7 +125,7 @@ public class BoardService {
     public BoardDto getCocktailBoardDetails(Long boardId) {
         Board board = boardRepository.findById(boardId).orElse(null);
         if (board == null || !board.getCategory().equals("칵테일")) {
-            return null; 
+            return null;
         }
         return BoardDto.fromCocktail(board);
     }
@@ -134,7 +134,7 @@ public class BoardService {
     public BoardDto getHangoverBoardDetails(Long boardId) {
         Board board = boardRepository.findById(boardId).orElse(null);
         if (board == null || !board.getCategory().equals("숙취해소")) {
-            return null; 
+            return null;
         }
         return BoardDto.fromHangover(board);
     }
