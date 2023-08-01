@@ -23,7 +23,7 @@ public class BoardDto  {
     private Long likes;
     private List<String> recipe;
     private List<Review> reviews;
-    private long commentCount;
+    private Long userId;
 
     public static BoardDto from(Board board) {
         BoardDto boardDto = new BoardDto();
@@ -33,42 +33,26 @@ public class BoardDto  {
         boardDto.setMainImage(board.getMainImage());
         boardDto.setCategory(board.getCategory());
         boardDto.setAverageScore(board.getAverageScore());
+        boardDto.setUserId(board.getUsers().getId());
         return boardDto;
     }
 
     // 칵테일 게시판 구조
     public static BoardDto fromCocktail(Board board) {
-        return BoardDto.builder()
-                .id(board.getId())
-                .title(board.getTitle())
-                .content(board.getContent())
-                .mainImage(board.getMainImage())
-                .category(board.getCategory())
-                .averageScore(board.getAverageScore())
-                .alcohol(board.getAlcohol())
-                .likes((long) board.getLikes().size())
-                .recipe(board.getRecipe())
-                .reviews(board.getReviews())
-                .commentCount(board.getCommentCount())
-                .build();
+        BoardDto boardDto = from(board);
+        boardDto.setAlcohol(board.getAlcohol());
+        boardDto.setLikes((long) board.getLikes().size());
+        boardDto.setRecipe(board.getRecipe());
+        boardDto.setReviews(board.getReviews());
+        return boardDto;
     }
 
     // 숙취해소 게시판 구조
     public static BoardDto fromHangover(Board board) {
-        return BoardDto.builder()
-                .id(board.getId())
-                .title(board.getTitle())
-                .content(board.getContent())
-                .mainImage(board.getMainImage())
-                .category(board.getCategory())
-                .averageScore(board.getAverageScore())
-                .likes((long) board.getLikes().size())
-                .recipe(board.getRecipe())
-                .reviews(board.getReviews())
-                .commentCount(board.getCommentCount())
-                .build();
+        BoardDto boardDto = from(board);
+        boardDto.setLikes((long) board.getLikes().size());
+        boardDto.setRecipe(board.getRecipe());
+        boardDto.setReviews(board.getReviews());
+        return boardDto;
     }
-
-    
-
 }

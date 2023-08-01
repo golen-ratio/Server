@@ -120,6 +120,7 @@ public class BoardService {
         List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
         return boardDtos;
     }
+
     // board id 를 통해서 칵테일의 구체적인 게시판을 가져옴
     public BoardDto getCocktailBoardDetails(Long boardId) {
         Board board = boardRepository.findById(boardId).orElse(null);
