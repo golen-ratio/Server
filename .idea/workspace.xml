@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FEAT] : 재료 검색">
+    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[CHORE] : 좋아요 반환값 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/LikeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +113,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690102829580</updated>
-      <workItem from="1690730935472" duration="9467000" />
+      <workItem from="1690730935472" duration="10019000" />
+      <workItem from="1690791026266" duration="15000" />
     </task>
     <task id="LOCAL-00001" summary="[FIX] : 카테고리 이름 통일, 충돌코드 삭제">
       <created>1690706047677</created>
@@ -172,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690741212075</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[CHORE] : 좋아요 반환값 변경">
+      <created>1690741488360</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690741488360</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +217,7 @@
     <MESSAGE value="[FEAT] : 칵테일 게시판 전체조회" />
     <MESSAGE value="[FEAT] : 숙취해소 게시판 전체조회" />
     <MESSAGE value="[FEAT] : 재료 검색" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FEAT] : 재료 검색" />
+    <MESSAGE value="[CHORE] : 좋아요 반환값 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="[CHORE] : 좋아요 반환값 변경" />
   </component>
 </project>
