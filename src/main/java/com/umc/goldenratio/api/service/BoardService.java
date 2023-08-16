@@ -13,6 +13,7 @@ import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
 import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
+import com.umc.goldenratio.api.dto.response.StringResponseDto;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +37,7 @@ public class BoardService {
     private final GradientRepository gradientRepository;
 
     @Transactional
-    public void createCocktail(Authentication authentication, CocktailRequestDto cocktailRequestDto) {
+    public StringResponseDto createCocktail(Authentication authentication, CocktailRequestDto cocktailRequestDto) {
         Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
         Board board = Board.toEntity(cocktailRequestDto.getTitle(),
                 cocktailRequestDto.getContent(),
@@ -50,10 +51,11 @@ public class BoardService {
         mappingService.save(cocktailRequestDto.getGradientList(), board);
         balanceService.save(cocktailRequestDto.getBalanceList(), board);
         detailService.save(cocktailRequestDto.getSweet(),cocktailRequestDto.getAlcohol(), board);
+        return StringResponseDto.of("칵테일 게시글이 성공적으로 등록되었습니다.");
     }
 
     @Transactional
-    public void createHangover(Authentication authentication, HangoverRequestDto hangoverRequestDto) {
+    public StringResponseDto createHangover(Authentication authentication, HangoverRequestDto hangoverRequestDto) {
         Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
         Board board = Board.toEntity(hangoverRequestDto.getTitle(),
                 hangoverRequestDto.getContent(),
@@ -65,6 +67,7 @@ public class BoardService {
 
         boardRepository.save(board);
         mappingService.save(hangoverRequestDto.getGradientList(), board);
+        return StringResponseDto.of("숙취해소 게시글이 성공적으로 등록되었습니다.");
     }
 
     // 도수순서대로 정렬
@@ -140,7 +143,7 @@ public class BoardService {
     }
 
     @Transactional
-    public void updateCocktail(Authentication authentication, Long boardId, CocktailRequestDto cocktailRequestDto) {
+    public StringResponseDto updateCocktail(Authentication authentication, Long boardId, CocktailRequestDto cocktailRequestDto) {
         Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
         Board board = boardRepository.findById(boardId).orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
         board.update(cocktailRequestDto.getTitle(),
@@ -151,10 +154,11 @@ public class BoardService {
         mappingService.update(cocktailRequestDto.getGradientList(), board);
         balanceService.update(cocktailRequestDto.getBalanceList(), board);
         detailService.update(cocktailRequestDto.getSweet(),cocktailRequestDto.getAlcohol(), board);
+        return StringResponseDto.of("칵테일 게시글이 성공적으로 수정되었습니다.");
     }
 
     @Transactional
-    public void updateHangover(Authentication authentication, Long boardId, HangoverRequestDto hangoverRequestDto) {
+    public StringResponseDto updateHangover(Authentication authentication, Long boardId, HangoverRequestDto hangoverRequestDto) {
         Users users = usersRepository.findByUserId(authentication.getName()).orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
         Board board = boardRepository.findById(boardId).orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
         board.update(hangoverRequestDto.getTitle(),
@@ -163,6 +167,7 @@ public class BoardService {
                 hangoverRequestDto.getCategory(), users);
         boardRepository.save(board);
         mappingService.update(hangoverRequestDto.getGradientList(), board);
+        return StringResponseDto.of("숙취해소 게시글이 성공적으로 수정되었습니다.");
     }
 
     public List<AllBoardListResponseDto> getAllCocktailBoards() {
