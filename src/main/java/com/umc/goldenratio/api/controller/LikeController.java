@@ -36,7 +36,7 @@ public class LikeController {
                 .orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
 
         likeService.toggleLike(board, users);
-        // 직접 응답을 생성하여 반환합니다.
+        // 직접 응답을 생성하여 반환
         StringResponseDto responseDto = StringResponseDto.of("성공적으로 좋아요가 등록되었습니다.");
         return ResponseEntity.ok(responseDto);
     }
