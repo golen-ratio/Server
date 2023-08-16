@@ -103,7 +103,7 @@ public class BoardController {
 
     //칵테일 상세게시글 조회
     @ApiOperation(value = "칵테일 상세 게시글 조회")
-    @GetMapping(value = "golden-ratio/cocktail/{board-id}", produces = "application/json;charset=utf-8")
+    @GetMapping(value = "/golden-ratio/cocktail/{board-id}", produces = "application/json;charset=utf-8")
     public ResponseEntity<BoardDto> getCocktailBoardDetails(@PathVariable("board-id") Long boardId) {
         BoardDto boardDto = boardService.getCocktailBoardDetails(boardId);
         if (boardDto == null) {
