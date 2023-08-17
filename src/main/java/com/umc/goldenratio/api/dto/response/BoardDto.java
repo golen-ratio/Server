@@ -5,7 +5,11 @@ import com.umc.goldenratio.api.domain.entity.Review;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 @Getter
 @Setter
@@ -22,8 +26,10 @@ public class BoardDto  {
     private int alcohol;
     private int likesCount;
     private List<String> recipe;
-    private List<Review> reviews;
+    private List<ReviewDto> reviews; // 리뷰 목록을 ReviewDto로 변경
     private Long userId;
+    private LocalDateTime createdDate; // 생성 날짜
+    private LocalDateTime lastModifiedTime; // 수정 날짜
 
     public static BoardDto from(Board board) {
         BoardDto boardDto = new BoardDto();
@@ -34,6 +40,8 @@ public class BoardDto  {
         boardDto.setCategory(board.getCategory());
         boardDto.setAverageScore(board.getAverageScore());
         boardDto.setUserId(board.getUsers().getId());
+        boardDto.setCreatedDate(board.getCreatedDate());
+        boardDto.setLastModifiedTime(board.getLastModifiedTime());
         return boardDto;
     }
 
@@ -43,7 +51,9 @@ public class BoardDto  {
         boardDto.setAlcohol(board.getAlcohol());
         boardDto.setLikesCount(board.getLikes().size());
         boardDto.setRecipe(board.getRecipe());
-        boardDto.setReviews(board.getReviews());
+        boardDto.setReviews(board.getReviews().stream()
+                .map(ReviewDto::from)
+                .collect(toList()));
         return boardDto;
     }
 
@@ -52,7 +62,9 @@ public class BoardDto  {
         BoardDto boardDto = from(board);
         boardDto.setLikesCount(board.getLikes().size());
         boardDto.setRecipe(board.getRecipe());
-        boardDto.setReviews(board.getReviews());
+        boardDto.setReviews(board.getReviews().stream()
+                .map(ReviewDto::from)
+                .collect(toList()));
         return boardDto;
     }
 }
