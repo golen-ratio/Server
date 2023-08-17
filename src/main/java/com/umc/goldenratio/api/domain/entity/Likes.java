@@ -24,9 +24,13 @@ public class Likes {
     private Users users;
 
     public void setBoard(Board board) {
+        if (this.board != null) {
+            this.board.getLikes().remove(this);
+        }
         this.board = board;
         if (board != null) {
-            board.updateLikesCount();
+            board.getLikes().add(this); // Add the like
+            board.updateLikesCount(); // Update
         }
     }
 

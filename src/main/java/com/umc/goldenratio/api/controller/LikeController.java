@@ -5,6 +5,7 @@ import com.umc.goldenratio.api.domain.entity.Users;
 import com.umc.goldenratio.api.domain.repository.BoardRepository;
 import com.umc.goldenratio.api.domain.repository.LikeRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
+import com.umc.goldenratio.api.dto.response.StringResponseDto;
 import com.umc.goldenratio.api.service.LikeService;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
@@ -27,7 +28,7 @@ public class LikeController {
     private final LikeService likeService;
 
     @PostMapping(value = "/like/{boardId}", produces = "application/json;charset=utf-8")
-    public ResponseEntity<String> toggleLike(Authentication authentication, @PathVariable Long boardId) {
+    public ResponseEntity<StringResponseDto> toggleLike(Authentication authentication, @PathVariable Long boardId) {
         String userId = authentication.getName();
         Users users = usersRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USERID_NOT_FOUND));
@@ -35,7 +36,9 @@ public class LikeController {
                 .orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
 
         likeService.toggleLike(board, users);
-        return ResponseEntity.ok().body("성공적으로 좋아요가 등록되었습니다.");
+        // 직접 응답을 생성하여 반환
+        StringResponseDto responseDto = StringResponseDto.of("성공적으로 좋아요가 등록되었습니다.");
+        return ResponseEntity.ok(responseDto);
     }
 }
 

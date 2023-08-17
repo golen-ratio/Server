@@ -5,6 +5,7 @@ import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
 import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
+import com.umc.goldenratio.api.dto.response.StringResponseDto;
 import com.umc.goldenratio.api.service.BoardService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -23,39 +24,39 @@ public class BoardController {
 
 
     @ApiOperation(value = "칵테일 게시판 생성")
-    @PostMapping(value = "/golden-ratio/cocktail", produces = "application/text;charset = utf-8")
-    public ResponseEntity<String> createBoard(Authentication authentication,
+    @PostMapping(value = "/golden-ratio/cocktail")
+    public ResponseEntity<StringResponseDto> createBoard(Authentication authentication,
                                               @RequestBody CocktailRequestDto cocktailRequestDto){
 
-        boardService.createCocktail(authentication, cocktailRequestDto);
-        return ResponseEntity.ok().body("칵테일 게시글이 성공적으로 등록되었습니다.");
+        StringResponseDto stringResponseDto = boardService.createCocktail(authentication, cocktailRequestDto);
+        return ResponseEntity.ok().body(stringResponseDto);
     }
 
     @ApiOperation(value = "숙취해소 게시판 생성")
-    @PostMapping(value = "/golden-ratio/hangover", produces = "application/text;charset = utf-8")
-    public ResponseEntity<String> createBoard(Authentication authentication,
-                                              @RequestBody HangoverRequestDto hangoverRequestDto){
+    @PostMapping(value = "/golden-ratio/hangover")
+    public ResponseEntity<StringResponseDto> createBoard(Authentication authentication,
+                                                         @RequestBody HangoverRequestDto hangoverRequestDto){
 
-        boardService.createHangover(authentication, hangoverRequestDto);
-        return ResponseEntity.ok().body("숙취해소 게시글이 성공적으로 등록되었습니다.");
+        StringResponseDto stringResponseDto = boardService.createHangover(authentication, hangoverRequestDto);
+        return ResponseEntity.ok().body(stringResponseDto);
     }
 
-    @PutMapping(value = "/golden-ratio/cocktail/{board-id}", produces = "application/text;charset = utf-8")
-    public ResponseEntity<String> updateBoard(Authentication authentication,
+    @PutMapping(value = "/golden-ratio/cocktail/{board-id}")
+    public ResponseEntity<StringResponseDto> updateBoard(Authentication authentication,
                                               @PathVariable("board-id") Long boardId,
                                               @RequestBody CocktailRequestDto cocktailRequestDto){
 
-        boardService.updateCocktail(authentication, boardId, cocktailRequestDto);
-        return ResponseEntity.ok().body("칵테일 게시글이 성공적으로 수정되었습니다.");
+        StringResponseDto stringResponseDto = boardService.updateCocktail(authentication, boardId, cocktailRequestDto);
+        return ResponseEntity.ok().body(stringResponseDto);
     }
 
-    @PutMapping(value = "/golden-ratio/hangover/{board-id}", produces = "application/text;charset = utf-8")
-    public ResponseEntity<String> updateBoard(Authentication authentication,
+    @PutMapping(value = "/golden-ratio/hangover/{board-id}")
+    public ResponseEntity<StringResponseDto> updateBoard(Authentication authentication,
                                               @PathVariable("board-id") Long boardId,
                                               @RequestBody HangoverRequestDto hangoverRequestDto){
 
-        boardService.updateHangover(authentication, boardId, hangoverRequestDto);
-        return ResponseEntity.ok().body("숙취해소 게시글이 성공적으로 수정되었습니다.");
+        StringResponseDto stringResponseDto = boardService.updateHangover(authentication, boardId, hangoverRequestDto);
+        return ResponseEntity.ok().body(stringResponseDto);
     }
 
     // 도수순서대로 정렬
@@ -89,20 +90,20 @@ public class BoardController {
     // 칵테일 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/cocktail/like")
     public ResponseEntity<List<BoardDto>> getCocktailBoardsSortedByLike() {
-        List<BoardDto> sortedBoards = boardService.getBoardsSortedByLike("cocktail");
+        List<BoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 숙취해소 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/hangover/like")
     public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByLike() {
-        List<BoardDto> sortedBoards = boardService.getBoardsSortedByLike("hangover");
+        List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
         return ResponseEntity.ok(sortedBoards);
     }
 
     //칵테일 상세게시글 조회
     @ApiOperation(value = "칵테일 상세 게시글 조회")
-    @GetMapping(value = "golden-ratio/cocktail/{board-id}", produces = "application/json;charset=utf-8")
+    @GetMapping(value = "/golden-ratio/cocktail/{board-id}", produces = "application/json;charset=utf-8")
     public ResponseEntity<BoardDto> getCocktailBoardDetails(@PathVariable("board-id") Long boardId) {
         BoardDto boardDto = boardService.getCocktailBoardDetails(boardId);
         if (boardDto == null) {

@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class JwtTokenUtil {
 
-//    private static final Long accessExpireTimeMs = 1000L * 60 * 60l; // 1시간 동안 토큰 유효
+    //    private static final Long accessExpireTimeMs = 1000L * 60 * 60l; // 1시간 동안 토큰 유효
     // 1 달동안 토큰 유효
     private static final Long accessExpireTimeMs = 1000L * 60 * 60 * 24 * 30l; // 1달 동안 토큰 유효
     private static final Long refreshExpireTimeMs = 1000L * 60 * 60 * 24 * 60l; // 2달 동안 토큰 유효

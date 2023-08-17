@@ -6,6 +6,7 @@ import com.umc.goldenratio.api.domain.repository.RefreshTokenRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.JoinRequestDto;
 import com.umc.goldenratio.api.dto.response.TokenResponseDto;
+import com.umc.goldenratio.api.dto.response.StringResponseDto;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
 import com.umc.goldenratio.utils.JwtTokenUtil;
@@ -29,16 +30,17 @@ public class UsersService {
     @Value("${jwt.secret}")
     private String key;
 
-    public void checkDuplicate(String userId) {
+    public StringResponseDto checkDuplicate(String userId) {
         if(usersRepository.findByUserId(userId).isPresent()) {
             throw new CustomException(ErrorCode.DUPLICATE_USERID);
         }
+        return StringResponseDto.of("사용 가능한 아이디입니다.");
     }
 
-    public String join(JoinRequestDto joinDto) {
+    public StringResponseDto join(JoinRequestDto joinDto) {
 
         usersRepository.save(JoinRequestDto.toEntity(joinDto.getUserId(), encoder.encode(joinDto.getPassword()), joinDto.getNickName(), joinDto.getProfileImageUrl()));
-        return joinDto.getUserId() +  "님이 성공적으로 회원가입되었습니다.";
+        return StringResponseDto.of(joinDto.getUserId() +  "님이 성공적으로 회원가입되었습니다.");
     }
 
     public TokenResponseDto login(String userId, String password) {

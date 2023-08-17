@@ -28,10 +28,10 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .csrf().disable()
                 .cors().and()
-                .authorizeRequests()
+                .authorizeRequests() // 요청에 의한 보안 검사
                 .antMatchers("/join", "/login","/v2/api-docs", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**","/check/**","/reissue").permitAll()
-                .antMatchers("/golden-ratio/**").authenticated()
-                .anyRequest().authenticated()
+                .antMatchers("/golden-ratio/**").authenticated() // golden-ratio 이하는 권한이 있는이에게만 요청된다
+                .anyRequest().authenticated() //어떤 요청에도 보안 검사
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

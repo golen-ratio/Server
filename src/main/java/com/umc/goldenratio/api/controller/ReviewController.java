@@ -4,6 +4,7 @@ import com.umc.goldenratio.api.domain.entity.Review;
 import com.umc.goldenratio.api.domain.entity.Users;
 import com.umc.goldenratio.api.dto.request.WriteReviewDto;
 import com.umc.goldenratio.api.dto.response.ReviewDto;
+import com.umc.goldenratio.api.dto.response.StringResponseDto;
 import com.umc.goldenratio.api.service.ReviewService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -27,15 +28,15 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @ApiOperation(value = "리뷰 작성")
-    @PostMapping(value= "/review/{boardId}", produces = "application/text;charset = utf-8")
-    public ResponseEntity<String> writeReview(@PathVariable Long boardId,
-                                              @RequestBody WriteReviewDto writeReviewDto,
-                                              Authentication authentication){
+    @PostMapping(value= "/review/{boardId}")
+    public ResponseEntity<StringResponseDto> writeReview(@PathVariable Long boardId,
+                                                         @RequestBody WriteReviewDto writeReviewDto,
+                                                         Authentication authentication){
 
         // Users의 id를 얻음
         String userId = authentication.getName();
-
-        return ResponseEntity.status(HttpStatus.OK).body(reviewService.write(boardId, writeReviewDto, userId));
+        StringResponseDto stringResponseDto = reviewService.write(boardId, writeReviewDto, userId);
+        return ResponseEntity.status(HttpStatus.OK).body(stringResponseDto);
     }
 
     // 특정 게시판의 리뷰들 조회
