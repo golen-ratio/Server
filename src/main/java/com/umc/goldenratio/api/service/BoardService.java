@@ -87,11 +87,19 @@ public class BoardService {
     private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
         List<BoardDto> boardDtoList = new ArrayList<>();
         for (Board board : boards) {
+            BoardDto boardDto;
             if (board.getCategory().equals("칵테일")) {
-                boardDtoList.add(BoardDto.fromCocktail(board));
+                boardDto = BoardDto.fromCocktail(board);
             } else if (board.getCategory().equals("숙취해소")) {
-                boardDtoList.add(BoardDto.fromHangover(board));
+                boardDto = BoardDto.fromHangover(board);
+            } else {
+                continue; // 다른 카테고리의 경우 무시하고 다음 반복으로 이동
             }
+
+            boardDto.setCreatedDate(board.getCreatedDate());
+            boardDto.setLastModifiedTime(board.getLastModifiedTime());
+
+            boardDtoList.add(boardDto);
         }
         return boardDtoList;
     }
@@ -130,7 +138,12 @@ public class BoardService {
         if (board == null || !board.getCategory().equals("칵테일")) {
             return null;
         }
-        return BoardDto.fromCocktail(board);
+        BoardDto boardDto = BoardDto.fromCocktail(board); // BoardDto 생성
+
+        boardDto.setCreatedDate(board.getCreatedDate()); // 생성 날짜 설정
+        boardDto.setLastModifiedTime(board.getLastModifiedTime()); // 수정 날짜 설정
+
+        return boardDto;
     }
 
     // board id 를 통해서 숙취해소의 구체적인 게시판을 가져옴
@@ -139,7 +152,12 @@ public class BoardService {
         if (board == null || !board.getCategory().equals("숙취해소")) {
             return null;
         }
-        return BoardDto.fromHangover(board);
+        BoardDto boardDto = BoardDto.fromCocktail(board); // BoardDto 생성
+
+        boardDto.setCreatedDate(board.getCreatedDate()); // 생성 날짜 설정
+        boardDto.setLastModifiedTime(board.getLastModifiedTime()); // 수정 날짜 설정
+
+        return boardDto;
     }
 
     @Transactional

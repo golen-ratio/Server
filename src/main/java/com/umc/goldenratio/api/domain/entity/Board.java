@@ -102,6 +102,7 @@ public class Board extends BaseTimeEntity {
         this.mainImage = mainImage;
         this.category = category;
         this.users = users;
+        this.lastModifiedTime = LocalDateTime.now(); // 업데이트 시점에 수정 날짜 업데이트
     }
 
     // 별점 평균 구하는 함수
