@@ -2,7 +2,14 @@ package com.umc.goldenratio.api.controller;
 
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
+<<<<<<< HEAD
 import com.umc.goldenratio.api.dto.response.*;
+=======
+import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
+import com.umc.goldenratio.api.dto.response.BoardDto;
+import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
+import com.umc.goldenratio.api.dto.response.StringResponseDto;
+>>>>>>> feature/posting/품바
 import com.umc.goldenratio.api.service.BoardService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -86,15 +93,25 @@ public class BoardController {
 
     // 칵테일 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/cocktail/like")
+<<<<<<< HEAD
     public ResponseEntity<List<SortedBoardDto>> getCocktailBoardsSortedByLike() {
         List<SortedBoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
+=======
+    public ResponseEntity<List<BoardDto>> getCocktailBoardsSortedByLike() {
+        List<BoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
+>>>>>>> feature/posting/품바
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 숙취해소 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/hangover/like")
+<<<<<<< HEAD
     public ResponseEntity<List<SortedBoardDto>> getHangoverBoardsSortedByLike() {
         List<SortedBoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
+=======
+    public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByLike() {
+        List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
+>>>>>>> feature/posting/품바
         return ResponseEntity.ok(sortedBoards);
     }
 

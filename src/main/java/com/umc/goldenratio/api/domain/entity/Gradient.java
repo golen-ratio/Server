@@ -28,6 +28,10 @@ public class Gradient {
     @OneToMany(mappedBy = "gradient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mapping> mappings = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
+
     @Builder
     public Gradient(String gradientName, String gradientImageUrl) {
         this.gradientName = gradientName;
@@ -39,5 +43,8 @@ public class Gradient {
                 .gradientName(gradientName)
                 .gradientImageUrl(gradientImageUrl)
                 .build();
+    }
+
+    public void add(Gradient gradient) {
     }
 }

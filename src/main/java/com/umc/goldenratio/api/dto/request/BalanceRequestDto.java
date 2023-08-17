@@ -8,4 +8,10 @@ import lombok.NoArgsConstructor;
 public class BalanceRequestDto {
     private String balanceName;
     private int balanceNum;
+
+    public void setBalanceName(String balanceName) {
+    }
+
+    public void setBalanceNum(Integer balanceNumber) {
+    }
 }
