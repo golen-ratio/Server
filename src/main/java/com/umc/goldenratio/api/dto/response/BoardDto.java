@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
+import static java.util.stream.Collectors.toList;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,6 +39,7 @@ public class BoardDto  {
         boardDto.setTitle(board.getTitle());
         boardDto.setContent(board.getContent());
         boardDto.setMainImage(board.getMainImage());
+        boardDto.setLikesCount(board.getLikesCount());
         boardDto.setCategory(board.getCategory());
         boardDto.setAverageScore(board.getAverageScore());
         boardDto.setUserId(board.getUsers().getId());
