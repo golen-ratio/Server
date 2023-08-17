@@ -2,10 +2,7 @@ package com.umc.goldenratio.api.controller;
 
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
-import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
-import com.umc.goldenratio.api.dto.response.BoardDto;
-import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
-import com.umc.goldenratio.api.dto.response.StringResponseDto;
+import com.umc.goldenratio.api.dto.response.*;
 import com.umc.goldenratio.api.service.BoardService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -61,43 +58,43 @@ public class BoardController {
 
     // 도수순서대로 정렬
     @GetMapping("/golden-ratio/cocktail/alchol")
-    public ResponseEntity<List<BoardDto>> getBoardsSortedByAlcohol() {
-        List<BoardDto> sortedBoards = boardService.getBoardsSortedByAlcohol();
+    public ResponseEntity<List<SortedBoardDto>> getBoardsSortedByAlcohol() {
+        List<SortedBoardDto> sortedBoards = boardService.getBoardsSortedByAlcohol();
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 단맛순서대로 정렬
     @GetMapping("/golden-ratio/cocktail/sweet")
-    public ResponseEntity<List<BoardDto>> getBoardsSortedBySweet() {
-        List<BoardDto> sortedBoards = boardService.getBoardsSortedBySweet();
+    public ResponseEntity<List<SortedBoardDto>> getBoardsSortedBySweet() {
+        List<SortedBoardDto> sortedBoards = boardService.getBoardsSortedBySweet();
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 칵테일 별점순 조회
     @GetMapping("/golden-ratio/cocktail/star")
-    public ResponseEntity<List<BoardDto>> getCocktailBoardsSortedByStar(){
-        List<BoardDto> sortedBoards = boardService.getCocktailBoardsSortedByStar();
+    public ResponseEntity<List<SortedBoardDto>> getCocktailBoardsSortedByStar(){
+        List<SortedBoardDto> sortedBoards = boardService.getCocktailBoardsSortedByStar();
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 숙취해소 별점순 조회
     @GetMapping("/golden-ratio/hangover/star")
-    public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByStar(){
-        List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByStar();
+    public ResponseEntity<List<SortedBoardDto>> getHangoverBoardsSortedByStar(){
+        List<SortedBoardDto> sortedBoards = boardService.getHangoverBoardsSortedByStar();
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 칵테일 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/cocktail/like")
-    public ResponseEntity<List<BoardDto>> getCocktailBoardsSortedByLike() {
-        List<BoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
+    public ResponseEntity<List<SortedBoardDto>> getCocktailBoardsSortedByLike() {
+        List<SortedBoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 숙취해소 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/hangover/like")
-    public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByLike() {
-        List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
+    public ResponseEntity<List<SortedBoardDto>> getHangoverBoardsSortedByLike() {
+        List<SortedBoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
         return ResponseEntity.ok(sortedBoards);
     }
 

@@ -10,10 +10,7 @@ import com.umc.goldenratio.api.domain.repository.GradientRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
-import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
-import com.umc.goldenratio.api.dto.response.BoardDto;
-import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
-import com.umc.goldenratio.api.dto.response.StringResponseDto;
+import com.umc.goldenratio.api.dto.response.*;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -71,19 +68,26 @@ public class BoardService {
     }
 
     // 도수순서대로 정렬
-    public List<BoardDto> getBoardsSortedByAlcohol() {
+    public List<SortedBoardDto> getBoardsSortedByAlcohol() {
         List<Board> boards =  boardRepository.findAllByOrderByAlcoholDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 단맛순서대로 정렬
-    public List<BoardDto> getBoardsSortedBySweet() {
+    public List<SortedBoardDto> getBoardsSortedBySweet() {
         List<Board> boards =  boardRepository.findAllByOrderBySweetlASC();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
-
+    private List<SortedBoardDto> sortedMapToBoardDtoList(List<Board> boards) {
+        List<SortedBoardDto> boardDtoList = new ArrayList<>();
+        for (Board board : boards) {
+            SortedBoardDto boardDto = SortedBoardDto.from(board);
+            boardDtoList.add(boardDto);
+        }
+        return boardDtoList;
+    }
     private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
         List<BoardDto> boardDtoList = new ArrayList<>();
         for (Board board : boards) {
@@ -105,30 +109,30 @@ public class BoardService {
     }
 
     // 칵테일 게시판 별점순서대로 정렬
-    public List<BoardDto> getCocktailBoardsSortedByStar() {
+    public List<SortedBoardDto> getCocktailBoardsSortedByStar() {
         List<Board> boards =  boardRepository.findAllByCocktailOrderByAverageScoreDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 숙취해소 게시판 별점순서대로 정렬
-    public List<BoardDto> getHangoverBoardsSortedByStar() {
+    public List<SortedBoardDto> getHangoverBoardsSortedByStar() {
         List<Board> boards =  boardRepository.findAllByHangoverOrderByAverageScoreDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 칵테일 게시판 좋아요순서대로 정렬
-    public List<BoardDto> getCocktailBoardsSortedByLike(String category) {
+    public List<SortedBoardDto> getCocktailBoardsSortedByLike(String category) {
         List<Board> boards = boardRepository.findAllByCocktailOrderByLikesDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 숙취해소 게시판 좋아요순서대로 정렬
-    public List<BoardDto> getHangoverBoardsSortedByLike(String category) {
+    public List<SortedBoardDto> getHangoverBoardsSortedByLike(String category) {
         List<Board> boards =  boardRepository.findAllByHangoverOrderByLikesDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
