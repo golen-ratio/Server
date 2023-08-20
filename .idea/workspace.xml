@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FIX] : String 반환값 변경">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[DOCS] : gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +161,7 @@
       <workItem from="1690869177898" duration="3119000" />
       <workItem from="1690872953099" duration="780000" />
       <workItem from="1692167708049" duration="3453000" />
-      <workItem from="1692517898656" duration="1268000" />
+      <workItem from="1692517898656" duration="1637000" />
     </task>
     <task id="LOCAL-00001" summary="[FIX] : 카테고리 이름 통일, 충돌코드 삭제">
       <created>1690706047677</created>
@@ -228,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692170982950</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[DOCS] : gitignore">
+      <created>1692519505765</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692519505765</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +272,7 @@
     <MESSAGE value="[FEAT] : 숙취해소 게시판 전체조회" />
     <MESSAGE value="[FEAT] : 재료 검색" />
     <MESSAGE value="[FIX] : String 반환값 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] : String 반환값 변경" />
+    <MESSAGE value="[DOCS] : gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="[DOCS] : gitignore" />
   </component>
 </project>
