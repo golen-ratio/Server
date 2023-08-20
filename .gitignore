@@ -41,4 +41,4 @@ out/
 application.yml
 
 ### workspace.xml 파일 ###
-.idea/workspace.xml
+.idea/**/workspace.xml
