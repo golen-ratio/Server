@@ -27,8 +27,8 @@ public class ReviewDto {
                 review.getContent(),
                 review.getScore()
         );
-    }
 
+    }
     public static ReviewDto from(Review review) {
         return ReviewDto.builder()
                 .id(review.getId())
@@ -39,3 +39,4 @@ public class ReviewDto {
                 .build();
     }
 }
+
