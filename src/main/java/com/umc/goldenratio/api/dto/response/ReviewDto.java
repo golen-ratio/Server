@@ -29,25 +29,6 @@ public class ReviewDto {
         );
 
     }
-    public static ReviewDto from(Review review) {
-        return ReviewDto.builder()
-                .id(review.getId())
-                .boardId(review.getBoard().getId())
-                .userId(review.getUsers().getId())
-                .content(review.getContent())
-                .score(review.getScore())
-                .build();
-    }
-
-    public static ReviewDto from(Review review) {
-        return ReviewDto.builder()
-                .id(review.getId())
-                .boardId(review.getBoard().getId())
-                .userId(review.getUsers().getId())
-                .content(review.getContent())
-                .score(review.getScore())
-                .build();
-    }
 
     public static ReviewDto from(Review review) {
         return ReviewDto.builder()
@@ -59,3 +40,4 @@ public class ReviewDto {
                 .build();
     }
 }
+

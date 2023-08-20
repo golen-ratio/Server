@@ -15,3 +15,4 @@ public class BalanceRequestDto {
     public void setBalanceNum(Integer balanceNumber) {
     }
 }
+

@@ -10,10 +10,7 @@ import com.umc.goldenratio.api.domain.repository.GradientRepository;
 import com.umc.goldenratio.api.domain.repository.UsersRepository;
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
-import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
-import com.umc.goldenratio.api.dto.response.BoardDto;
-import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
-import com.umc.goldenratio.api.dto.response.StringResponseDto;
+import com.umc.goldenratio.api.dto.response.*;
 import com.umc.goldenratio.exception.CustomException;
 import com.umc.goldenratio.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -66,24 +63,30 @@ public class BoardService {
                 users);
 
         boardRepository.save(board);
-        mappingService.save(hangoverRequestDto.getGradientList(), board);
         return StringResponseDto.of("숙취해소 게시글이 성공적으로 등록되었습니다.");
     }
 
     // 도수순서대로 정렬
-    public List<BoardDto> getBoardsSortedByAlcohol() {
+    public List<SortedBoardDto> getBoardsSortedByAlcohol() {
         List<Board> boards =  boardRepository.findAllByOrderByAlcoholDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 단맛순서대로 정렬
-    public List<BoardDto> getBoardsSortedBySweet() {
+    public List<SortedBoardDto> getBoardsSortedBySweet() {
         List<Board> boards =  boardRepository.findAllByOrderBySweetlASC();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
-
+    private List<SortedBoardDto> sortedMapToBoardDtoList(List<Board> boards) {
+        List<SortedBoardDto> boardDtoList = new ArrayList<>();
+        for (Board board : boards) {
+            SortedBoardDto boardDto = SortedBoardDto.from(board);
+            boardDtoList.add(boardDto);
+        }
+        return boardDtoList;
+    }
     private List<BoardDto> mapToBoardDtoList(List<Board> boards) {
         List<BoardDto> boardDtoList = new ArrayList<>();
         for (Board board : boards) {
@@ -104,32 +107,31 @@ public class BoardService {
         return boardDtoList;
     }
 
-
     // 칵테일 게시판 별점순서대로 정렬
-    public List<BoardDto> getCocktailBoardsSortedByStar() {
+    public List<SortedBoardDto> getCocktailBoardsSortedByStar() {
         List<Board> boards =  boardRepository.findAllByCocktailOrderByAverageScoreDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 숙취해소 게시판 별점순서대로 정렬
-    public List<BoardDto> getHangoverBoardsSortedByStar() {
+    public List<SortedBoardDto> getHangoverBoardsSortedByStar() {
         List<Board> boards =  boardRepository.findAllByHangoverOrderByAverageScoreDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 칵테일 게시판 좋아요순서대로 정렬
-    public List<BoardDto> getCocktailBoardsSortedByLike(String category) {
+    public List<SortedBoardDto> getCocktailBoardsSortedByLike(String category) {
         List<Board> boards = boardRepository.findAllByCocktailOrderByLikesDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
     // 숙취해소 게시판 좋아요순서대로 정렬
-    public List<BoardDto> getHangoverBoardsSortedByLike(String category) {
+    public List<SortedBoardDto> getHangoverBoardsSortedByLike(String category) {
         List<Board> boards =  boardRepository.findAllByHangoverOrderByLikesDesc();
-        List<BoardDto> boardDtos = this.mapToBoardDtoList(boards);
+        List<SortedBoardDto> boardDtos = this.sortedMapToBoardDtoList(boards);
         return boardDtos;
     }
 
@@ -139,7 +141,6 @@ public class BoardService {
         if (board == null || !board.getCategory().equals("칵테일")) {
             return null;
         }
-
         BoardDto boardDto = BoardDto.fromCocktail(board); // BoardDto 생성
 
         boardDto.setCreatedDate(board.getCreatedDate()); // 생성 날짜 설정
@@ -148,22 +149,19 @@ public class BoardService {
         return boardDto;
     }
 
-
     // board id 를 통해서 숙취해소의 구체적인 게시판을 가져옴
     public BoardDto getHangoverBoardDetails(Long boardId) {
         Board board = boardRepository.findById(boardId).orElse(null);
         if (board == null || !board.getCategory().equals("숙취해소")) {
             return null;
         }
+        BoardDto boardDto = BoardDto.fromCocktail(board); // BoardDto 생성
 
-            BoardDto boardDto = BoardDto.fromCocktail(board); // BoardDto 생성
+        boardDto.setCreatedDate(board.getCreatedDate()); // 생성 날짜 설정
+        boardDto.setLastModifiedTime(board.getLastModifiedTime()); // 수정 날짜 설정
 
-            boardDto.setCreatedDate(board.getCreatedDate()); // 생성 날짜 설정
-            boardDto.setLastModifiedTime(board.getLastModifiedTime()); // 수정 날짜 설정
-
-            return boardDto;
-        }
-
+        return boardDto;
+    }
 
     @Transactional
     public StringResponseDto updateCocktail(Authentication authentication, Long boardId, CocktailRequestDto cocktailRequestDto) {
@@ -189,7 +187,6 @@ public class BoardService {
                 hangoverRequestDto.getHangoverMainImageUrl(),
                 hangoverRequestDto.getCategory(), users);
         boardRepository.save(board);
-        mappingService.update(hangoverRequestDto.getGradientList(), board);
         return StringResponseDto.of("숙취해소 게시글이 성공적으로 수정되었습니다.");
     }
 
@@ -220,3 +217,4 @@ public class BoardService {
         return IngredientResponseDto.of(gradient.getGradientName(), gradient.getGradientImageUrl());
     }
 }
+

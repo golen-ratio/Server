@@ -55,6 +55,12 @@ public class Board extends BaseTimeEntity {
     @JoinColumn(name = "users_id")
     private Users users;
 
+    @ElementCollection
+    private List<String> recipe;
+
+    @Column(name = "sweetness")
+    private int sweet;
+
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Gradient> gradient = new ArrayList<>();
 
@@ -125,15 +131,10 @@ public class Board extends BaseTimeEntity {
         return details.get(0).getAlcohol();
     }
 
-<<<<<<< HEAD
     public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
     }
-=======
 
-    public void setLikesCount(int likesCount) {
-        this.likesCount = likesCount;
-    }
 
     public void addGradient(Gradient gradient) {
         gradient.add(gradient);
@@ -142,5 +143,5 @@ public class Board extends BaseTimeEntity {
     public void addBalance(Balance balance) {
         balances.add(balance);
     }
->>>>>>> feature/posting/품바
 }
+

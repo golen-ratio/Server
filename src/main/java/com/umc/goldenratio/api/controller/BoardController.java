@@ -2,14 +2,11 @@ package com.umc.goldenratio.api.controller;
 
 import com.umc.goldenratio.api.dto.request.CocktailRequestDto;
 import com.umc.goldenratio.api.dto.request.HangoverRequestDto;
-<<<<<<< HEAD
 import com.umc.goldenratio.api.dto.response.*;
-=======
 import com.umc.goldenratio.api.dto.response.AllBoardListResponseDto;
 import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
 import com.umc.goldenratio.api.dto.response.StringResponseDto;
->>>>>>> feature/posting/품바
 import com.umc.goldenratio.api.service.BoardService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +27,7 @@ public class BoardController {
     @ApiOperation(value = "칵테일 게시판 생성")
     @PostMapping(value = "/golden-ratio/cocktail")
     public ResponseEntity<StringResponseDto> createBoard(Authentication authentication,
-                                              @RequestBody CocktailRequestDto cocktailRequestDto){
+                                                         @RequestBody CocktailRequestDto cocktailRequestDto){
 
         StringResponseDto stringResponseDto = boardService.createCocktail(authentication, cocktailRequestDto);
         return ResponseEntity.ok().body(stringResponseDto);
@@ -47,8 +44,8 @@ public class BoardController {
 
     @PutMapping(value = "/golden-ratio/cocktail/{board-id}")
     public ResponseEntity<StringResponseDto> updateBoard(Authentication authentication,
-                                              @PathVariable("board-id") Long boardId,
-                                              @RequestBody CocktailRequestDto cocktailRequestDto){
+                                                         @PathVariable("board-id") Long boardId,
+                                                         @RequestBody CocktailRequestDto cocktailRequestDto){
 
         StringResponseDto stringResponseDto = boardService.updateCocktail(authentication, boardId, cocktailRequestDto);
         return ResponseEntity.ok().body(stringResponseDto);
@@ -56,8 +53,8 @@ public class BoardController {
 
     @PutMapping(value = "/golden-ratio/hangover/{board-id}")
     public ResponseEntity<StringResponseDto> updateBoard(Authentication authentication,
-                                              @PathVariable("board-id") Long boardId,
-                                              @RequestBody HangoverRequestDto hangoverRequestDto){
+                                                         @PathVariable("board-id") Long boardId,
+                                                         @RequestBody HangoverRequestDto hangoverRequestDto){
 
         StringResponseDto stringResponseDto = boardService.updateHangover(authentication, boardId, hangoverRequestDto);
         return ResponseEntity.ok().body(stringResponseDto);
@@ -93,25 +90,16 @@ public class BoardController {
 
     // 칵테일 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/cocktail/like")
-<<<<<<< HEAD
+ 
     public ResponseEntity<List<SortedBoardDto>> getCocktailBoardsSortedByLike() {
         List<SortedBoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
-=======
-    public ResponseEntity<List<BoardDto>> getCocktailBoardsSortedByLike() {
-        List<BoardDto> sortedBoards = boardService.getCocktailBoardsSortedByLike("cocktail");
->>>>>>> feature/posting/품바
         return ResponseEntity.ok(sortedBoards);
     }
 
     // 숙취해소 게시판 좋아요순 조회
     @GetMapping("/golden-ratio/hangover/like")
-<<<<<<< HEAD
     public ResponseEntity<List<SortedBoardDto>> getHangoverBoardsSortedByLike() {
         List<SortedBoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
-=======
-    public ResponseEntity<List<BoardDto>> getHangoverBoardsSortedByLike() {
-        List<BoardDto> sortedBoards = boardService.getHangoverBoardsSortedByLike("hangover");
->>>>>>> feature/posting/품바
         return ResponseEntity.ok(sortedBoards);
     }
 
@@ -154,5 +142,6 @@ public class BoardController {
         IngredientResponseDto ingredientResponseDto = boardService.searchGradient(name);
         return ResponseEntity.ok().body(ingredientResponseDto);
     }
-     
+
 }
+
