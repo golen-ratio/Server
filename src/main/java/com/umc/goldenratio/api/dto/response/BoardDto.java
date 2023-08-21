@@ -30,13 +30,12 @@ public class BoardDto  {
     private int likesCount;
     private List<BalanceRequestDto> balanceList;
     private List<String> recipe;
->>>>>>> feature/posting/품바
     private List<ReviewDto> reviews; // 리뷰 목록을 ReviewDto로 변경
     private Long userId;
     private LocalDateTime createdDate; // 생성 날짜
     private LocalDateTime lastModifiedTime; // 수정 날짜
     private List<IngredientResponseDto> gradients;
-    private List<BalanceRequestDto> balanceList;
+//    private List<BalanceRequestDto> balanceList;
 
     public static BoardDto from(Board board) {
 
