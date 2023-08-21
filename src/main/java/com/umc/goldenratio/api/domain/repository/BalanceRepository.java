@@ -1,9 +1,9 @@
 package com.umc.goldenratio.api.domain.repository;
 
+import com.umc.goldenratio.api.domain.entity.Balance;
 import com.umc.goldenratio.api.domain.entity.Board;
-import com.umc.goldenratio.api.domain.entity.Mapping;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MappingRepository extends JpaRepository<Mapping, Long> {
+public interface BalanceRepository extends JpaRepository<Balance, Long> {
     void deleteByBoard(Board board);
 }

@@ -16,7 +16,9 @@ public enum ErrorCode {
     INVALID_JWT_TOKEN(UNAUTHORIZED, "유효하지 않은 JWT 토큰입니다"),
     INVALID_REFRESH_TOKEN(UNAUTHORIZED, "유효하지 않은 리프레시 토큰입니다"),
     EXPIRED_TOKEN(UNAUTHORIZED, "만료된 토큰입니다"),
-    DUPLICATE_USERID(CONFLICT, "이미 존재하는 아이디입니다");
+    DUPLICATE_USERID(CONFLICT, "이미 존재하는 아이디입니다"),
+    BOARD_NOT_FOUND(NOT_FOUND, "보드를 찾을 수 없습니다"),
+    INGREDIENT_NOT_FOUND(NOT_FOUND, "재료를 찾을 수 없습니다");
 
 
     private final HttpStatus httpStatus;

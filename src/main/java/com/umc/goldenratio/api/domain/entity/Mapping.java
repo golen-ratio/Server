@@ -25,4 +25,10 @@ public class Mapping {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gradient_id")
     private Gradient gradient;
+
+    @Builder
+    public Mapping(Board board, Gradient gradient) {
+        this.board = board;
+        this.gradient = gradient;
+    }
 }

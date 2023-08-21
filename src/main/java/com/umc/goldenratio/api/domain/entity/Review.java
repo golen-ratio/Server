@@ -1,12 +1,10 @@
 package com.umc.goldenratio.api.domain.entity;
 
 import com.umc.goldenratio.common.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -23,7 +21,7 @@ public class Review extends BaseTimeEntity {
     private String content;
 
     @Column(name = "review_score")
-    private int score;
+    private double score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id")
