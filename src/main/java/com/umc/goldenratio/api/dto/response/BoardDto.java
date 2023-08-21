@@ -104,7 +104,6 @@ public class BoardDto  {
                 .map(ReviewDto::from)
                 .collect(toList( )));
 
-        boardDto.setBalanceList(Collections.emptyList());
         boardDto.setCreatedDate(board.getCreatedDate( ));
         boardDto.setLastModifiedTime(board.getLastModifiedTime( ));
         boardDto.setMainImage(board.getUsers().getProfileImageUrl());

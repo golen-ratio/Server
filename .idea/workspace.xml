@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FEAT] : 재료 검색">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/SortedBoardDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Gradient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Gradient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/BalanceRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/BalanceRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/HangoverRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/HangoverRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/BoardDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/BoardDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/ReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/ReviewDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/config/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +45,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
@@ -89,20 +86,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "git-widget-placeholder": "feature/posting/품바",
-    "jdk.selected.JAVA_MODULE": "17",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/posting/품바&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\goldenratio\Server\src\main" />
