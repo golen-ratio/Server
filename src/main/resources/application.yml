@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/goldenratio
     username: sa
-    password: 'sa'
+    password: 'g'
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
@@ -25,3 +25,15 @@ server:
   servlet:
     encoding:
       charset: UTF-8
+
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAXVOEDL5LWTXLNB5D
+      secretKey: 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
+    s3:
+      bucket: footstepbucket
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false

@@ -5,39 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187efc18-178a-41e3-a055-adde654b6433" name="Changes" comment="[FEAT] : 재료 검색">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/StringResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/ReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/service/UsersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SERVERMAIN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SERVERMAIN.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/goldenratio.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/goldenratio.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/SortedBoardDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Gradient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/domain/entity/Gradient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/BalanceRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/BalanceRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/HangoverRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/request/HangoverRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/BoardDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/BoardDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/ReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/api/dto/response/ReviewDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/config/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/config/swagger/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/config/swagger/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/CustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/CustomException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/CustomExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/CustomExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/exception/ErrorResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/utils/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/umc/goldenratio/utils/JwtTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/umc/goldenratio/GoldenratioApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/umc/goldenratio/GoldenratioApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,12 +44,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="goldenratio" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="goldenratio" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -156,44 +125,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/posting/품바&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamja/Documents/GitHub/Server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;e05657f1a3f3d67c7395b65922ca254f&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature/posting/품바",
     "jdk.selected.JAVA_MODULE": "17",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "e05657f1a3f3d67c7395b65922ca254f",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -202,11 +150,12 @@
       <recent name="E:\SERVERMAIN\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.goldenserverApplication">
+  <component name="RunManager" selected="Spring Boot.GoldenratioApplication">
     <configuration name="goldenserverApplication" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="azul-11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.umc.goldenratio.GoldenratioApplication" />
-      <module name="com.umc.goldenratio.main" />
+      <module name="goldenratio.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -230,7 +179,6 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="GoldenratioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -244,7 +192,6 @@
       <item itemvalue="Application.goldenserverApplication" />
       <item itemvalue="Gradle.SERVERMAIN [build]" />
       <item itemvalue="Spring Boot.GoldenratioApplication" />
-      <item itemvalue="애플리케이션.goldenserverApplication" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -271,6 +218,7 @@
       <workItem from="1692282108742" duration="397000" />
       <workItem from="1692282613264" duration="10819000" />
       <workItem from="1692294874007" duration="3560000" />
+      <workItem from="1692589648139" duration="3696000" />
     </task>
     <task id="LOCAL-00001" summary="[FIX] : 카테고리 이름 통일, 충돌코드 삭제">
       <created>1690706047677</created>

@@ -8,11 +8,13 @@ import com.umc.goldenratio.api.dto.response.BoardDto;
 import com.umc.goldenratio.api.dto.response.IngredientResponseDto;
 import com.umc.goldenratio.api.dto.response.StringResponseDto;
 import com.umc.goldenratio.api.service.BoardService;
+import com.umc.goldenratio.api.service.S3Service;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.List;
@@ -22,6 +24,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final S3Service s3Service;
 
 
     @ApiOperation(value = "칵테일 게시판 생성")
@@ -143,5 +146,10 @@ public class BoardController {
         return ResponseEntity.ok().body(ingredientResponseDto);
     }
 
+    @PostMapping("/golden-ratio/url")
+    public ResponseEntity<StringResponseDto> image(@RequestPart MultipartFile image) {
+        String imageUrl = s3Service.uploadImage(image);
+        return ResponseEntity.ok().body(StringResponseDto.of(imageUrl));
+    }
 }
 
