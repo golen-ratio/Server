@@ -18,6 +18,7 @@ public class ReviewDto {
     private Long userId;
     private String content;
     private double score;
+    private String profileImageUrl;
 
     public static ReviewDto createReviewDto(Review review) {
         return new ReviewDto(
@@ -25,7 +26,8 @@ public class ReviewDto {
                 review.getBoard().getId(),
                 review.getUsers().getId(),
                 review.getContent(),
-                review.getScore()
+                review.getScore(),
+                review.getUsers().getProfileImageUrl()
         );
 
     }
@@ -37,6 +39,7 @@ public class ReviewDto {
                 .userId(review.getUsers().getId())
                 .content(review.getContent())
                 .score(review.getScore())
+                .profileImageUrl(review.getUsers().getProfileImageUrl())
                 .build();
     }
 }
