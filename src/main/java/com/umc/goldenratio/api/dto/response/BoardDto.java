@@ -22,7 +22,7 @@ public class BoardDto  {
     private Long id;
     private String title;
     private String content;
-    private String mainImage;
+    private String mainImageUrl;
     private String category;
     private double averageScore;
     private int alcohol;
@@ -43,7 +43,7 @@ public class BoardDto  {
         boardDto.setId(board.getId());
         boardDto.setTitle(board.getTitle());
         boardDto.setContent(board.getContent());
-        boardDto.setMainImage(board.getMainImage());
+        boardDto.setMainImageUrl(board.getMainImageUrl());
         boardDto.setLikesCount(board.getLikesCount());
         boardDto.setCategory(board.getCategory());
         boardDto.setAverageScore(board.getAverageScore());
@@ -84,7 +84,7 @@ public class BoardDto  {
 
         boardDto.setCreatedDate(board.getCreatedDate( ));
         boardDto.setLastModifiedTime(board.getLastModifiedTime( ));
-        boardDto.setMainImage(board.getUsers().getProfileImageUrl());
+        boardDto.setMainImageUrl(board.getMainImageUrl());
         return boardDto;
     }
 
@@ -108,7 +108,7 @@ public class BoardDto  {
                 .collect(toList( )));
         boardDto.setCreatedDate(board.getCreatedDate( ));
         boardDto.setLastModifiedTime(board.getLastModifiedTime( ));
-        boardDto.setMainImage(board.getUsers().getProfileImageUrl());
+        boardDto.setMainImageUrl(board.getMainImageUrl());
         return boardDto;
     }
 }

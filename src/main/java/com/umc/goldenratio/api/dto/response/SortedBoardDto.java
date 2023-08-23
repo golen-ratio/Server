@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.toList;
 public class SortedBoardDto {
     private Long Boardid;
     private String title;
-    private String mainImage;
+    private String mainImageUrl;
     private double averageScore;
     private int likesCount;
 
@@ -23,7 +23,7 @@ public class SortedBoardDto {
         SortedBoardDto sortedBoardDto = new SortedBoardDto();
         sortedBoardDto.setBoardid(board.getId());
         sortedBoardDto.setTitle(board.getTitle());
-        sortedBoardDto.setMainImage(board.getMainImage());
+        sortedBoardDto.setMainImageUrl(board.getMainImageUrl());
         sortedBoardDto.setLikesCount(board.getLikesCount());
         sortedBoardDto.setAverageScore(board.getAverageScore());
         return sortedBoardDto;
