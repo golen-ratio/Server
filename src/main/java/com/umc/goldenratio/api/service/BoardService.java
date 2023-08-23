@@ -195,7 +195,7 @@ public class BoardService {
         List<AllBoardListResponseDto> allBoardListResponseDtos = new ArrayList<>();
         for (Board board : boards) {
             int likeCount = board.getLikes().size();
-            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImage(), board.getAverageScore(), likeCount);
+            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImageUrl(), board.getAverageScore(), likeCount);
             allBoardListResponseDtos.add(allBoardListResponseDto);
         }
         return allBoardListResponseDtos;
@@ -206,7 +206,7 @@ public class BoardService {
         List<AllBoardListResponseDto> allBoardListResponseDtos = new ArrayList<>();
         for(Board board : boards) {
             int likeCount = board.getLikes().size();
-            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImage(), board.getAverageScore(), likeCount);
+            AllBoardListResponseDto allBoardListResponseDto = AllBoardListResponseDto.of(board.getId(), board.getTitle(), board.getMainImageUrl(), board.getAverageScore(), likeCount);
             allBoardListResponseDtos.add(allBoardListResponseDto);
         }
         return allBoardListResponseDtos;

@@ -31,7 +31,7 @@ public class Board extends BaseTimeEntity {
     private String content;
 
     @Column(name = "board_main_image")
-    private String mainImage;
+    private String mainImageUrl;
 
     @LastModifiedDate
     private LocalDateTime lastModifiedTime;
@@ -83,7 +83,7 @@ public class Board extends BaseTimeEntity {
     public Board(String title, String content, String mainImage, String category, Double averageScore, Double totalScore, Users users) {
         this.title = title;
         this.content = content;
-        this.mainImage = mainImage;
+        this.mainImageUrl = mainImage;
         this.category = category;
         this.averageScore = averageScore;
         this.totalScore = totalScore;
@@ -105,7 +105,7 @@ public class Board extends BaseTimeEntity {
     public void update(String title, String content, String mainImage, String category, Users users) {
         this.title = title;
         this.content = content;
-        this.mainImage = mainImage;
+        this.mainImageUrl = mainImage;
         this.category = category;
         this.users = users;
         this.lastModifiedTime = LocalDateTime.now(); // 업데이트 시점에 수정 날짜 업데이트
